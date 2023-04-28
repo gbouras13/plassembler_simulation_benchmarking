@@ -1,2 +1,2 @@
-# plassembler_simulation_benchmakring
+# Plassembler Simulation & Benchmarking
 Benchmarking and Simulation Scripts for Plassembler
