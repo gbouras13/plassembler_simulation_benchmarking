@@ -2,7 +2,7 @@
 
 Simulations 
 
-* Using [Nanosim](https://github.com/bcgsc/NanoSim) and [InSilicoSeq](https://github.com/HadrienG/InSilicoSeq)
+* Using [badread](https://github.com/rrwick/Badread) and [InSilicoSeq](https://github.com/HadrienG/InSilicoSeq)
 
 
 
@@ -37,6 +37,41 @@ cat C222_chromosome_reads.fastq.gz  C222_plasmid_reads.fastq.gz > C222.fastq.gz
 
 
 ../plassembler/bin/plassembler.py -d ../plas_db -l C222.fastq.gz -1 C222_R1.fastq.gz -2 C222_R2.fastq.gz -o C222_plassembler_test -t 16 -f
+
+
+
+### Anna genomes 
+
+PacBio HGAP assemblies
+
+https://www.ncbi.nlm.nih.gov/assembly?LinkName=bioproject_assembly_all&from_uid=246471
+
+CAV17
+
+https://journals.asm.org/doi/full/10.1128/AAC.01823-16
+
+https://www.ncbi.nlm.nih.gov/assembly/GCF_001908715.1
+
+# ground truth 
+
+https://www.ncbi.nlm.nih.gov/nuccore/CP009465.1
+
+
+hawkey 
+
+https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-022-01103-0#MOESM1
+
+de maio 
+
+https://pubmed.ncbi.nlm.nih.gov/31483244/
+
+assemblies https://figshare.com/articles/dataset/Hybrid_Enterobacteriaceae_assemblies_using_PacBio_Illumina_or_ONT_Illumina_sequencing/7649051
+
+fastqs https://www.ncbi.nlm.nih.gov/bioproject/PRJNA422511
+
+###
+
+
 
 
 
