@@ -46,11 +46,50 @@ PacBio HGAP assemblies
 
 https://www.ncbi.nlm.nih.gov/assembly?LinkName=bioproject_assembly_all&from_uid=246471
 
-CAV17
+
+
+#### CAV17
 
 https://journals.asm.org/doi/full/10.1128/AAC.01823-16
 
 https://www.ncbi.nlm.nih.gov/assembly/GCF_001908715.1
+
+
+
+
+
+
+
+
+
+
+# download the accessions 
+
+conda activate ncbi-acc-download
+
+# https://github.com/kblin/ncbi-acc-download
+
+ncbi-acc-download --format fasta CP018676.1
+ncbi-acc-download --format fasta CP018674.1
+ncbi-acc-download --format fasta CP018672.1
+ncbi-acc-download --format fasta CP018675.1
+ncbi-acc-download --format fasta CP018673.1
+
+
+conda activate insilicoseq 
+
+iss generate --genomes cav1217_combined.fasta --cpus 8 --model novaseq --compress  --n_reads 5M --output cav1217_short_reads
+
+
+ conda activate badread
+
+ badread simulate --reference cav1217_combined.fasta --quantity 100x \
+ --error_model nanopore2020 --qscore_model nanopore2020 --seed 43 --length 10000,5000  \
+    | gzip > cav1217_combined_reads.fastq.gz
+
+# need to put circular=true in teh headers
+
+
 
 # ground truth 
 
@@ -61,6 +100,8 @@ hawkey
 
 https://genomemedicine.biomedcentral.com/articles/10.1186/s13073-022-01103-0#MOESM1
 
+- didnt put the Long read data in the NCBI - hence not using.
+
 de maio 
 
 https://pubmed.ncbi.nlm.nih.gov/31483244/
@@ -69,16 +110,49 @@ assemblies https://figshare.com/articles/dataset/Hybrid_Enterobacteriaceae_assem
 
 fastqs https://www.ncbi.nlm.nih.gov/bioproject/PRJNA422511
 
+
+conda activate fastq-dl
+
+fastq-dl --cpus 8  PRJNA422511  
+
+
+
+#### vibrio
+
+conda activate fastq-dl
+
+fastq-dl --cpus 8  PRJNA479421  
+
+conda activate plassembler
+
+PLASSEMBLER_DIR="/Users/a1667917/Documents/plassembler/bin"
+
+PLASSEMBLER_DB="/Users/a1667917/Documents/Plassembler_DB"
+
+$PLASSEMBLER_DIR/plassembler.py -d $PLASSEMBLER_DB -l  SRR8335319_1.fastq.gz -1 SRR8335320_1.fastq.gz -2 SRR8335320_2.fastq.gz -o vibrio -t 16 -s 100 -c 1500000 -f
+
+# indeed, this has discovered a plasmid missed in the refseq assembly!
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ###
-
-
-
-
-
-
-
-
-
 
 * Firstly, I downloaded the 6 tarballs from this [link](https://bridges.monash.edu/articles/dataset/Small_plasmid_Nanopore_data/13543754). 
 
