@@ -1,0 +1,16 @@
+# Snakemake config
+input:
+output: 'plassembler_simulation_benchmarking.out/'
+log: 'plassembler_simulation_benchmarking/plassembler_simulation_benchmarking.log'
+threads: 8
+
+# Snakemake Params
+
+BigJobMem: 32000     
+BigJobCpu: 16       
+SmallJobMem: 4000
+SmallJobCpu: 1 
+
+SmallTime: 5
+BigTime: 300
+MediumTime: 120

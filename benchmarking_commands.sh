@@ -56,13 +56,6 @@ https://www.ncbi.nlm.nih.gov/assembly/GCF_001908715.1
 
 
 
-
-
-
-
-
-
-
 # download the accessions 
 
 conda activate ncbi-acc-download
@@ -117,6 +110,27 @@ fastq-dl --cpus 8  PRJNA422511
 
 
 
+conda activate plassembler
+
+PLASSEMBLER_DIR="/Users/a1667917/Documents/plassembler/bin"
+
+PLASSEMBLER_DB="/Users/a1667917/Documents/Plassembler_DB"
+
+$PLASSEMBLER_DIR/plassembler.py -d $PLASSEMBLER_DB -l  SRR8494912_1.fastq.gz -1 SRR8482586_1.fastq.gz -2 SRR8482586_2.fastq.gz -o pacbio_SAMN10819819 -c 4000000 -f
+
+
+$PLASSEMBLER_DIR/plassembler.py -d $PLASSEMBLER_DB -l  SRR8494939_1.fastq.gz -1 SRR8482586_1.fastq.gz -2 SRR8482586_2.fastq.gz -o ont_SAMN10819819 -c 5000000 -f -r
+
+
+SRR8482586
+SRR8494912
+SRR8494939
+
+# no polishing
+flye --nano-raw SRR8494939_1.fastq.gz --out-dir test_flye -t 16 --iterations 0
+
+
+
 #### vibrio
 
 conda activate fastq-dl
@@ -132,6 +146,9 @@ PLASSEMBLER_DB="/Users/a1667917/Documents/Plassembler_DB"
 $PLASSEMBLER_DIR/plassembler.py -d $PLASSEMBLER_DB -l  SRR8335319_1.fastq.gz -1 SRR8335320_1.fastq.gz -2 SRR8335320_2.fastq.gz -o vibrio -t 16 -s 100 -c 1500000 -f
 
 # indeed, this has discovered a plasmid missed in the refseq assembly!
+
+
+
 
 
 
