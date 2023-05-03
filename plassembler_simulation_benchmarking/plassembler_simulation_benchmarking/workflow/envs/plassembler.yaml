@@ -6,4 +6,5 @@ dependencies:
   - rasusa
   - pysam
   - chopper
+  - time
 

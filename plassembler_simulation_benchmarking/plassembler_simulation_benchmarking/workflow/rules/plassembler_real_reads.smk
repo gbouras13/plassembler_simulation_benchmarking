@@ -4,15 +4,15 @@ rule run_plassembler_8_threads:
         short_one = get_short_one,
         short_two = get_short_two
     output:
-        plas_file = os.path.join(PLASSEMBLER_OUTPUT_8_THREADS_REAL,"{sample}", "{sample}_plasmids.fasta"),
-        time = "{sample}_plassembler_8_threads_real_time.txt"
+        plas_file = os.path.join(PLASSEMBLER_OUTPUT_8_THREADS_REAL,"{sample}", "{sample}_plasmids.fasta")
     threads:
         8
     params:
         bindir = PLASSEMBLER_BIN,
         db =PLASSEMBLER_DB,
         out_dir = os.path.join(PLASSEMBLER_OUTPUT_8_THREADS_REAL,"{sample}"),
-        chrom = get_length
+        chrom = get_length,
+        tp = TIME_PATH
     log:
         os.path.join(BENCHMARKS,"{sample}_plassembler_8_threads_real.txt")
     # benchmark:
@@ -24,7 +24,7 @@ rule run_plassembler_8_threads:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        /usr/bin/time -l -h -o {log}  {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
+        {params.tp}/time -f '%M %K %E %S %U'  -o {log}  {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
         -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f 
         '''
 

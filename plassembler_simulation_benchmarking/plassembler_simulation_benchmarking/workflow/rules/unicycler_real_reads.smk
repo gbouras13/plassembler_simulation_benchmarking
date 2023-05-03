@@ -4,12 +4,12 @@ rule run_unicycler_8_threads_real:
         short_one = get_short_one,
         short_two = get_short_two
     output:
-        uni_fasta = os.path.join(UNICYCLER_OUTPUT_8_THREADS_REAL,"{sample}", "assembly.fasta"),
-        time = "{sample}_unicycler_8_threads_real_time.txt"
+        uni_fasta = os.path.join(UNICYCLER_OUTPUT_8_THREADS_REAL,"{sample}", "assembly.fasta")
     threads:
         8
     params:
-        out_dir = os.path.join(UNICYCLER_OUTPUT_8_THREADS_REAL,"{sample}")
+        out_dir = os.path.join(UNICYCLER_OUTPUT_8_THREADS_REAL,"{sample}"),
+        tp = TIME_PATH
     log:
         os.path.join(BENCHMARKS,"{sample}_unicycler_8_threads_real.txt")
     # benchmark:
@@ -21,7 +21,7 @@ rule run_unicycler_8_threads_real:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        /usr/bin/time -l -h  -o {log} unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads} 
+        {params.tp}/time  -f '%M %K %E %S %U'  -o {log}  unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads} 
         '''
 
 
