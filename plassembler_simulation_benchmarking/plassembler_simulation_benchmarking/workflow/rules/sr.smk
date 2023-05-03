@@ -1,14 +1,34 @@
-rule short_read_simulate:
+rule generate_coverage_file:
     input:
         get_genome
+    output:
+        os.path.join(SR,"{sample}_coverage.tsv")
+    threads:
+        1
+    resources:
+        mem_mb=1000,
+        time=5
+    params:
+        SR,
+        60
+    conda:
+        os.path.join('..', 'envs','scripts.yaml')
+    script:
+        '../scripts/create_coverage_file.py'
+
+
+rule short_read_simulate:
+    input:
+        get_genome,
+        os.path.join(SR,"{sample}_coverage.tsv")
     output:
         os.path.join(SR,"{sample}_R1.fastq.gz"),
         os.path.join(SR,"{sample}_R2.fastq.gz")
     threads:
-        BigJobCpu
+        8
     resources:
-        mem_mb=BigJobMem,
-        time=BigTime
+        mem_mb=32000,
+        time=300
     params:
         get_length,
         os.path.join(SR,"{sample}")
@@ -16,7 +36,7 @@ rule short_read_simulate:
         os.path.join('..', 'envs','iss.yaml')
     shell:
         '''
-        iss generate --genomes {input[0]} --cpus {threads} --model novaseq --compress --n_reads {params[0]} --output {params[1]}
+        iss generate --genomes {input[0]} --cpus {threads} --model novaseq --compress --coverage_file {input[1]} --output {params[1]}
         '''
 
 
@@ -34,5 +54,5 @@ rule sr_aggr:
         touch {output[0]}
         """
 
-
+#### generate coverage file
 

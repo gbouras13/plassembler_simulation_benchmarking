@@ -17,25 +17,21 @@ OUTPUT = config['output']
 THREADS = config['threads']
 
 
-# snakemake params 
-MassiveJobMem = config["BigJobMem"]
-BigJobMem = config["BigJobMem"]
-BigJobCpu = config["BigJobCpu"]
-SmallJobMem = config["SmallJobMem"]
-SmallJobCpu = config["SmallJobCpu"]
-
-SmallTime = config["SmallTime"]
-BigTime = config["BigTime"]
-MediumTime = config["MediumTime"]
-
+# for assembly 
+PLASSEMBLER_BIN = config["PLASSEMBLER_BIN"]
+PLASSEMBLER_DB = config["PLASSEMBLER_DB"]
 
 
 # need to specify the reads directory
 CSV = config['input']
 
 # define functions
-def get_input_lr_fastqs(wildcards):
-    return dictReads[wildcards.sample]["LR"]
+def get_genome(wildcards):
+    return dictReads[wildcards.sample]["genome"]
+
+def get_length(wildcards):
+    chrom = dictReads[wildcards.sample]["total_length"]
+    return str(chrom)
 
 
 ### DIRECTORIES
@@ -43,19 +39,17 @@ include: "rules/directories.smk"
 
 # Parse the samples and read files
 include: "rules/samples.smk"
-dictReads = parseSamples(CSV)
+dictReads = parseSamplesSimulate(CSV)
 SAMPLES = list(dictReads.keys())
-
 
 
 # Import rules and functions
 include: "rules/targets.smk"
-include: "rules/qc.smk"
-include: "rules/align.smk"
-include: "rules/quantify.smk"
-include: "rules/nanoreceptor.smk"
+include: "rules/plassembler_simulated_reads.smk"
+
+
 
 rule all:
     input:
-        TargetFiles
+        AssembleSimulateTargetFiles
         

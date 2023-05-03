@@ -4,16 +4,16 @@ rule long_read_simulate:
     output:
         os.path.join(LR,"{sample}.fastq.gz")
     threads:
-        BigJobCpu
+        16
     resources:
-        mem_mb=BigJobMem,
-        time=BigTime
+        mem_mb=32000,
+        time=300
     conda:
         os.path.join('..', 'envs','badread.yaml')
     shell:
         '''
-         badread simulate --reference {input[0]}  --quantity 100x  --error_model nanopore2020 --qscore_model nanopore2020 --seed 43 \
-         --length 10000,5000 | gzip > {output[0]}
+         badread simulate --reference {input[0]}  --quantity 60x  --error_model nanopore2020 --qscore_model nanopore2020 --seed 43 \
+         --length 10000,10000 | gzip > {output[0]}
         '''
 
 

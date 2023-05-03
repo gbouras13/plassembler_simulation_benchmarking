@@ -110,25 +110,46 @@ Available targets:
     print_targets   List available targets
 """
 
-help_msg_assemble = """
+help_msg_assemble_simulated = """
 \b
 CLUSTER EXECUTION:
-plassembler_simulation_benchmarking assemble ... --profile [profile]
+plassembler_simulation_benchmarking assemble-simulated ... --profile [profile]
 For information on Snakemake profiles see:
 https://snakemake.readthedocs.io/en/stable/executing/cli.html#profiles
 \b
 RUN EXAMPLES:
-Required:           plassembler_simulation_benchmarking assemble --input [file]
-Specify threads:    plassembler_simulation_benchmarking assemble ... --threads [threads]
-Disable conda:      plassembler_simulation_benchmarking assemble ... --no-use-conda 
-Change defaults:    plassembler_simulation_benchmarking assemble ... --snake-default="-k --nolock"
-Add Snakemake args: plassembler_simulation_benchmarking assemble ... --dry-run --keep-going --touch
-Specify targets:    plassembler_simulation_benchmarking assemble ... all print_targets
+Required:           plassembler_simulation_benchmarking assemble-simulated --input [file]
+Specify threads:    plassembler_simulation_benchmarking assemble-simulated ... --threads [threads]
+Disable conda:      plassembler_simulation_benchmarking assemble-simulated ... --no-use-conda 
+Change defaults:    plassembler_simulation_benchmarking assemble-simulated ... --snake-default="-k --nolock"
+Add Snakemake args: plassembler_simulation_benchmarking assemble-simulated ... --dry-run --keep-going --touch
+Specify targets:    plassembler_simulation_benchmarking assemble-simulated ... all print_targets
 Available targets:
     all             assemble everything (default)
     print_targets   List available targets
 """
 
+help_msg_assemble_real = """
+\b
+CLUSTER EXECUTION:
+plassembler_simulation_benchmarking assemble-real ... --profile [profile]
+For information on Snakemake profiles see:
+https://snakemake.readthedocs.io/en/stable/executing/cli.html#profiles
+\b
+RUN EXAMPLES:
+Required:           plassembler_simulation_benchmarking assemble-real --input [file]
+Specify threads:    plassembler_simulation_benchmarking assemble-real ... --threads [threads]
+Disable conda:      plassembler_simulation_benchmarking assemble-real ... --no-use-conda 
+Change defaults:    plassembler_simulation_benchmarking assemble-real ... --snake-default="-k --nolock"
+Add Snakemake args: plassembler_simulation_benchmarking assemble-real ... --dry-run --keep-going --touch
+Specify targets:    plassembler_simulation_benchmarking assemble-real ... all print_targets
+Available targets:
+    all             assemble everything (default)
+    print_targets   List available targets
+"""
+
+
+#### simulate
 
 @click.command(
     epilog=help_msg_simulate,
@@ -153,45 +174,44 @@ def simulate(_input, output, log, **kwargs):
     )
 
 
-
+##### assemble simulated
 
 @click.command(
-    epilog=help_msg_assemble,
+    epilog=help_msg_assemble_simulated,
     context_settings=dict(
         help_option_names=["-h", "--help"], ignore_unknown_options=True
     ))
-@click.option(
-            "--use-conda/--no-use-conda",
-            default=True,
-            help="Use conda for Snakemake rules",
-            show_default=True,
-        )
-@click.option(
-            "--snake-default",
-            multiple=True,
-            default=[
-                "--rerun-incomplete",
-                "--printshellcmds",
-                "--nolock",
-                "--show-failed-logs",
-                "--conda-frontend conda"
-            ],
-            help="Customise Snakemake runtime args",
-            show_default=True,
-        )
+@click.option("--input", "_input", help="Input file/directory", type=str, required=True)
 @common_options
-def assemble(species, referenceDir,log,output,  **kwargs):
-    """assemble plassembler_simulation_benchmarking"""
+def assemble_simulated(_input, output, log, **kwargs):
+    """assemble simulated reads plassembler_simulation_benchmarking"""
     # Config to add or update in configfile
     merge_config = {"input": _input, "output": output, "log": log}
     """Install databases"""
     run_snakemake(
-        snakefile_path=snake_base(os.path.join('workflow','assemble.smk')),
+        snakefile_path=snake_base(os.path.join('workflow','assemble_simulated.smk')),
         merge_config=merge_config,
         **kwargs)
 
 
+##### assemble real reads
 
+@click.command(
+    epilog=help_msg_assemble_real,
+    context_settings=dict(
+        help_option_names=["-h", "--help"], ignore_unknown_options=True
+    ))
+@click.option("--input", "_input", help="Input file/directory", type=str, required=True)
+@common_options
+def assemble_real(_input, output, log, **kwargs):
+    """assemble real reads plassembler_simulation_benchmarking"""
+    # Config to add or update in configfile
+    merge_config = {"input": _input, "output": output, "log": log}
+    """Install databases"""
+    run_snakemake(
+        snakefile_path=snake_base(os.path.join('workflow','assemble_real.smk')),
+        merge_config=merge_config,
+        **kwargs)
 
 
 
@@ -209,7 +229,8 @@ def citation(**kwargs):
 
 
 cli.add_command(simulate)
-cli.add_command(assemble)
+cli.add_command(assemble_simulated)
+cli.add_command(assemble_real)
 cli.add_command(config)
 cli.add_command(citation)
 
