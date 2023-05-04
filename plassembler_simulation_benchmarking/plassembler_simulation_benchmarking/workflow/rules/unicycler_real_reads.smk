@@ -8,12 +8,11 @@ rule run_unicycler_8_threads_real:
     threads:
         8
     params:
-        out_dir = os.path.join(UNICYCLER_OUTPUT_8_THREADS_REAL,"{sample}"),
-        tp = TIME_PATH
+        out_dir = os.path.join(UNICYCLER_OUTPUT_8_THREADS_REAL,"{sample}")
     log:
         os.path.join(BENCHMARKS,"{sample}_unicycler_8_threads_real.txt")
-    # benchmark:
-    #     repeat(os.path.join(BENCHMARKS,"{sample}_unicycler_8_threads_real.txt"),2)
+    benchmark:
+        os.path.join(BENCHMARKS,"{sample}_unicycler_8_threads_real_snakemake.txt")
     resources:
         mem_mb=32000,
         time=300 # 300mins
@@ -21,7 +20,7 @@ rule run_unicycler_8_threads_real:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        {params.tp}/time  -f '%M %K %E %S %U'  -o {log}  unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads} 
+        /usr/bin/time -h -l  -o {log}  unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads} 
         '''
 
 

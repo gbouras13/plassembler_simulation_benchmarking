@@ -30,7 +30,7 @@ def get_genome(wildcards):
     return dictReads[wildcards.sample]["genome"]
 
 def get_length(wildcards):
-    chrom = dictReads[wildcards.sample]["total_length"]
+    chrom = dictReads[wildcards.sample]["chromosome_length"]
     return str(chrom)
 
 

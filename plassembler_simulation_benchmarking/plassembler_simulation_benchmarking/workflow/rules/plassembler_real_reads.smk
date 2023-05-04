@@ -11,12 +11,11 @@ rule run_plassembler_8_threads:
         bindir = PLASSEMBLER_BIN,
         db =PLASSEMBLER_DB,
         out_dir = os.path.join(PLASSEMBLER_OUTPUT_8_THREADS_REAL,"{sample}"),
-        chrom = get_length,
-        tp = TIME_PATH
+        chrom = get_length
     log:
         os.path.join(BENCHMARKS,"{sample}_plassembler_8_threads_real.txt")
-    # benchmark:
-    #     repeat(os.path.join(BENCHMARKS,"{sample}_plassembler_8_threads_real.txt"),2)
+    benchmark:
+        os.path.join(BENCHMARKS,"{sample}_plassembler_8_threads_real_snakemake.txt")
     resources:
         mem_mb=32000,
         time=1000 # 300mins
@@ -24,7 +23,7 @@ rule run_plassembler_8_threads:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        {params.tp}/time -f '%M %K %E %S %U'  -o {log}  {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
+        /usr/bin/time -h -l  -o {log}  {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
         -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f 
         '''
 

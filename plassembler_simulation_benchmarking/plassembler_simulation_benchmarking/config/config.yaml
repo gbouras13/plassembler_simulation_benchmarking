@@ -8,5 +8,4 @@ threads: 16
 
 PLASSEMBLER_BIN : "/Users/a1667917/Documents/plassembler/bin"
 PLASSEMBLER_DB : "/Users/a1667917/Documents/Plassembler_DB"
-TIME_PATH: "/Users/a1667917/Documents/plassembler_simulation_benchmarking/plassembler_simulation_benchmarking/plassembler_simulation_benchmarking/workflow/conda/f5898e7ba03d4aba2aac79970df4015a_/bin/"
 
