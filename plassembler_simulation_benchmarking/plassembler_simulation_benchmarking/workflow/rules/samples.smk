@@ -16,13 +16,13 @@ def simulate_from_csv(csvFile):
             if len(l) == 2:
                 outDict[l[0]] = {}
                 outDict[l[0]]['chromosome_length'] = l[1]
-                else:
-                    sys.stderr.write("\n"
-                                     f"    FATAL: Error parsing {csvFile}.  \n"
-                                     "    Check formatting, and that \n" 
-                                     "    file names and file paths are correct.\n"
-                                     "\n")
-                    sys.exit(1)
+            else:
+                sys.stderr.write("\n"
+                                    f"    FATAL: Error parsing {csvFile}.  \n"
+                                    "    Check formatting, and that \n" 
+                                    "    file names and file paths are correct.\n"
+                                    "\n")
+                sys.exit(1)
     return outDict
 
 
