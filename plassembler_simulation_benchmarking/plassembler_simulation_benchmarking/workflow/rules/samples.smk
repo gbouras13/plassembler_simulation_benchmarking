@@ -15,7 +15,7 @@ def simulate_from_csv(csvFile):
             l = line.strip().split(',')
             if len(l) == 2:
                 outDict[l[0]] = {}
-                    outDict[l[0]]['chromosome_length'] = l[1]
+                outDict[l[0]]['chromosome_length'] = l[1]
                 else:
                     sys.stderr.write("\n"
                                      f"    FATAL: Error parsing {csvFile}.  \n"
