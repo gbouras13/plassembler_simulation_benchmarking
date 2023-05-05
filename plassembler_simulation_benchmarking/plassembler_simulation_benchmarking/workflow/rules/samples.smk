@@ -6,23 +6,21 @@ Function for parsing the 'Reads' config and identifying samples and read files
 def simulate_from_csv(csvFile):
     """
     Read samples and files from CSV 
-    3 cols
+    2 cols
     1 = sample 
-    2 = genome
     3 = chromosome_length
     """
     outDict = {}
     with open(csvFile,'r') as csv:
         for line in csv:
             l = line.strip().split(',')
-            if len(l) == 3:
+            if len(l) == 2:
                 outDict[l[0]] = {}
                 if os.path.isfile(l[1]):
-                    outDict[l[0]]['genome'] = l[1]
-                    outDict[l[0]]['chromosome_length'] = l[2]
+                    outDict[l[0]]['chromosome_length'] = l[1]
                 else:
                     sys.stderr.write("\n"
-                                     f"    FATAL: Error parsing {csvFile}. {l[1]} does not exist. \n"
+                                     f"    FATAL: Error parsing {csvFile}.  \n"
                                      "    Check formatting, and that \n" 
                                      "    file names and file paths are correct.\n"
                                      "\n")

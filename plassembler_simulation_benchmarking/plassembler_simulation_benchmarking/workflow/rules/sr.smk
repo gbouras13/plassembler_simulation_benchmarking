@@ -1,6 +1,6 @@
 rule generate_coverage_file:
     input:
-        get_genome
+        os.path.join(GENOME,"{sample}.fasta")
     output:
         os.path.join(SR,"{sample}_coverage.tsv")
     threads:
@@ -19,7 +19,7 @@ rule generate_coverage_file:
 
 rule short_read_simulate:
     input:
-        get_genome,
+        os.path.join(GENOME,"{sample}.fasta"),
         os.path.join(SR,"{sample}_coverage.tsv")
     output:
         os.path.join(SR,"{sample}_R1.fastq.gz"),

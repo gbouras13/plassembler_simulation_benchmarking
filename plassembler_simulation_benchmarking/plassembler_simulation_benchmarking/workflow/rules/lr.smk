@@ -1,6 +1,6 @@
 rule long_read_simulate:
     input:
-        get_genome
+        os.path.join(GENOME,"{sample}.fasta")
     output:
         os.path.join(LR,"{sample}.fastq.gz")
     threads:

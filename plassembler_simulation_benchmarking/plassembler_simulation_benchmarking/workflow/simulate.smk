@@ -21,11 +21,10 @@ THREADS = config['threads']
 
 # need to specify the reads directory
 CSV = config['input']
+# genome dir 
+GENOME = os.path.join(workflow.basedir, '../', 'genomes')
 
 # define functions
-def get_genome(wildcards):
-    return dictReads[wildcards.sample]["genome"]
-
 def get_length(wildcards):
     reads = dictReads[wildcards.sample]["chromosome_length"]
     return int(reads)

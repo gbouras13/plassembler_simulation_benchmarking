@@ -3,9 +3,10 @@ input:
 output: 'plassembler_simulation_benchmarking.out/'
 log: 'plassembler_simulation_benchmarking/plassembler_simulation_benchmarking.log'
 threads: 16
-
 # Snakemake Params
 
-PLASSEMBLER_BIN : "/Users/a1667917/Documents/plassembler/bin"
-PLASSEMBLER_DB : "/Users/a1667917/Documents/Plassembler_DB"
+PLASSEMBLER_BIN : "/data/plassembler_benchmarking/plassembler/bin"
+PLASSEMBLER_DB : "/data/plassembler_benchmarking/plassembler_db"
+
+
 
