@@ -8,7 +8,6 @@ def simulate_from_csv(csvFile):
     Read samples and files from CSV 
     2 cols
     1 = sample 
-    3 = chromosome_length
     """
     outDict = {}
     with open(csvFile,'r') as csv:
@@ -16,7 +15,6 @@ def simulate_from_csv(csvFile):
             l = line.strip().split(',')
             if len(l) == 2:
                 outDict[l[0]] = {}
-                if os.path.isfile(l[1]):
                     outDict[l[0]]['chromosome_length'] = l[1]
                 else:
                     sys.stderr.write("\n"
