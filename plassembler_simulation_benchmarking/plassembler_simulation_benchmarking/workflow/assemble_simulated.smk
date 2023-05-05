@@ -46,7 +46,7 @@ SAMPLES = list(dictReads.keys())
 # Import rules and functions
 include: "rules/targets.smk"
 include: "rules/plassembler_simulated_reads.smk"
-
+include: "rules/unicycler_simulated_reads.smk"
 
 
 rule all:

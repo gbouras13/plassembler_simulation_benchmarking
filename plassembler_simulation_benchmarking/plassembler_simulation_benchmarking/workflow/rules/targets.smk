@@ -10,7 +10,7 @@ SimulateTargetFiles = [
 ]
 
 AssembleSimulateTargetFiles = [
-os.path.join(FLAGS, "plassembler_8_threads_simulated_aggr.txt"),
+os.path.join(FLAGS, "plassembler_simulated_aggr.txt"),
 os.path.join(FLAGS, "unicycler_8_threads_simulated_aggr.txt")
 ]
 
