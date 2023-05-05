@@ -22,7 +22,7 @@ THREADS = config['threads']
 # need to specify the reads directory
 CSV = config['input']
 # genome dir 
-GENOME = os.path.join(workflow.basedir, '../', 'genomes')
+GENOME = os.path.join(workflow.basedir, '../../', 'genomes')
 
 # define functions
 def get_length(wildcards):
