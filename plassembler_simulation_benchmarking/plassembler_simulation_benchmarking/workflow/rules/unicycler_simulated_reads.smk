@@ -50,11 +50,11 @@ rule run_unicycler_16_threads_simulated:
         short_one = os.path.join(SR,"{sample}_R1.fastq.gz"),
         short_two = os.path.join(SR,"{sample}_R2.fastq.gz")
     output:
-        uni_fasta = os.path.join(UNICYCLER_OUTPUT_8_THREADS_SIMULATED,"{sample}", "assembly.fasta")
+        uni_fasta = os.path.join(UNICYCLER_OUTPUT_16_THREADS_SIMULATED,"{sample}", "assembly.fasta")
     threads:
         16
     params:
-        out_dir = os.path.join(UNICYCLER_OUTPUT_8_THREADS_SIMULATED,"{sample}")
+        out_dir = os.path.join(UNICYCLER_OUTPUT_16_THREADS_SIMULATED,"{sample}")
     resources:
         mem_mb=32000,
         time=4000
