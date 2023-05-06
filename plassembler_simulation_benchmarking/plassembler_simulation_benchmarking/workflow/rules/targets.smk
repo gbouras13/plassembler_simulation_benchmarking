@@ -11,7 +11,7 @@ SimulateTargetFiles = [
 
 AssembleSimulateTargetFiles = [
 os.path.join(FLAGS, "plassembler_simulated_aggr.txt"),
-#os.path.join(FLAGS, "unicycler_simulated_aggr.txt")
+os.path.join(FLAGS, "unicycler_simulated_aggr.txt")
 ]
 
 AssembleRealTargetFiles = [

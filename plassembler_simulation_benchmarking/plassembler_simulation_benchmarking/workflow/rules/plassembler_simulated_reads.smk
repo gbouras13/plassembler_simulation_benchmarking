@@ -12,7 +12,7 @@ rule run_plassembler_8_threads_simulated:
         db =PLASSEMBLER_DB,
         out_dir = os.path.join(PLASSEMBLER_OUTPUT_8_THREADS_SIMULATED,"{sample}"),
         chrom = get_length
-    log:
+    benchmark:
         os.path.join(BENCHMARKS,"{sample}_plassembler_8_threads_simulated.txt")
     resources:
         mem_mb=32000,
@@ -21,7 +21,7 @@ rule run_plassembler_8_threads_simulated:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        time -h -l  -o {log} {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} \
+        {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} \
          -2 {input.short_two} -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f
         '''
 
@@ -43,13 +43,13 @@ rule run_plassembler_1_threads_simulated:
     resources:
         mem_mb=32000,
         time=2000 # 2000mins
-    log:
+    benchmark:
         os.path.join(BENCHMARKS,"{sample}_plassembler_1_threads_simulated.txt")
     conda:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        time -h -l  -o {log} {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} \
+        {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} \
          -2 {input.short_two} -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f
         '''
 
@@ -85,8 +85,8 @@ rule run_plassembler_16_threads_simulated:
 rule aggr_plassembler_simulated:
     """aggregate lr"""
     input:
-        #expand(os.path.join(PLASSEMBLER_OUTPUT_1_THREADS_SIMULATED,"{sample}", "{sample}_plasmids.fasta"), sample = SAMPLES),
-        #expand(os.path.join(PLASSEMBLER_OUTPUT_8_THREADS_SIMULATED,"{sample}", "{sample}_plasmids.fasta"), sample = SAMPLES),
+        expand(os.path.join(PLASSEMBLER_OUTPUT_1_THREADS_SIMULATED,"{sample}", "{sample}_plasmids.fasta"), sample = SAMPLES),
+        expand(os.path.join(PLASSEMBLER_OUTPUT_8_THREADS_SIMULATED,"{sample}", "{sample}_plasmids.fasta"), sample = SAMPLES),
         expand(os.path.join(PLASSEMBLER_OUTPUT_16_THREADS_SIMULATED,"{sample}", "{sample}_plasmids.fasta"), sample = SAMPLES)
     output:
         os.path.join(FLAGS, "plassembler_simulated_aggr.txt")

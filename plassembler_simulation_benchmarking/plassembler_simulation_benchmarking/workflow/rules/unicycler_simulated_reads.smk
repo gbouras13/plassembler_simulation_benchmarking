@@ -9,7 +9,7 @@ rule run_unicycler_1_threads_simulated:
         1
     params:
         out_dir = os.path.join(UNICYCLER_OUTPUT_1_THREADS_SIMULATED,"{sample}")
-    log:
+    benchmark:
         os.path.join(BENCHMARKS,"{sample}_unicycler_1_threads_simulated.txt")
     resources:
         mem_mb=32000,
@@ -18,7 +18,7 @@ rule run_unicycler_1_threads_simulated:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        time -h -l  -o {log} unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
+        unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
         '''
 
 rule run_unicycler_8_threads_simulated:
@@ -32,7 +32,7 @@ rule run_unicycler_8_threads_simulated:
         8
     params:
         out_dir = os.path.join(UNICYCLER_OUTPUT_8_THREADS_SIMULATED,"{sample}")
-    log:
+    benchmark:
         os.path.join(BENCHMARKS,"{sample}_unicycler_8_threads_simulated.txt")
     resources:
         mem_mb=32000,
@@ -41,7 +41,7 @@ rule run_unicycler_8_threads_simulated:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        time -h -l  -o {log} unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
+        unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
         '''
 
 rule run_unicycler_16_threads_simulated:
@@ -58,13 +58,13 @@ rule run_unicycler_16_threads_simulated:
     resources:
         mem_mb=32000,
         time=4000
-    log:
+    benchmark:
         os.path.join(BENCHMARKS,"{sample}_plassembler_16_threads_simulated.txt")
     conda:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        time -h -l  -o {log} unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
+        unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
         '''
 
 
