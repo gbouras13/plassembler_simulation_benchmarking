@@ -11,10 +11,10 @@ SimulateTargetFiles = [
 
 AssembleSimulateTargetFiles = [
 os.path.join(FLAGS, "plassembler_simulated_aggr.txt"),
-os.path.join(FLAGS, "unicycler_8_threads_simulated_aggr.txt")
+os.path.join(FLAGS, "unicycler_simulated_aggr.txt")
 ]
 
 AssembleRealTargetFiles = [
-os.path.join(FLAGS, "plassembler_8_threads_real_aggr.txt"),
-os.path.join(FLAGS, "unicycler_8_threads_real_aggr.txt")
+os.path.join(FLAGS, "plassembler_real_aggr.txt"),
+os.path.join(FLAGS, "unicycler_real_aggr.txt")
 ]

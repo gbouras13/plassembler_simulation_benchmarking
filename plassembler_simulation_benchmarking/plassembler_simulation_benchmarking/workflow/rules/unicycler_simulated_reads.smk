@@ -55,8 +55,6 @@ rule run_unicycler_1_threads_simulated:
         1
     params:
         out_dir = os.path.join(UNICYCLER_OUTPUT_8_THREADS_SIMULATED,"{sample}")
-    benchmark:
-        repeat(os.path.join(BENCHMARKS,"{sample}_unicycler_8_threads_simulated.txt"),2)
     resources:
         mem_mb=32000,
         time=2000
