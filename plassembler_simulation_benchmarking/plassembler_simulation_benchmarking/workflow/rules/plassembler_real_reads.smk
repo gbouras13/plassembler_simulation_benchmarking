@@ -21,7 +21,7 @@ rule run_plassembler_1_thread_real:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        /usr/bin/time -h -l  -o {log}  {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
+        time -h -l  -o {log}  {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
         -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f 
         '''
 
@@ -48,7 +48,7 @@ rule run_plassembler_8_threads_real:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        /usr/bin/time -h -l  -o {log}  {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
+        time -h -l  -o {log}  {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
         -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f 
         '''
 
@@ -76,7 +76,7 @@ rule run_plassembler_16_threads_real:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        /usr/bin/time -h -l  -o {log}  {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
+        time -h -l  -o {log}  {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
         -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f 
         '''
 

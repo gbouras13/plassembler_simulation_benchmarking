@@ -18,7 +18,7 @@ rule run_unicycler_1_threads_simulated:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        /usr/bin/time -h -l  -o {log} unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
+        time -h -l  -o {log} unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
         '''
 
 rule run_unicycler_8_threads_simulated:
@@ -41,7 +41,7 @@ rule run_unicycler_8_threads_simulated:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        /usr/bin/time -h -l  -o {log} unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
+        time -h -l  -o {log} unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
         '''
 
 rule run_unicycler_16_threads_simulated:
@@ -64,7 +64,7 @@ rule run_unicycler_16_threads_simulated:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        /usr/bin/time -h -l  -o {log} unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
+        time -h -l  -o {log} unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
         '''
 
 
