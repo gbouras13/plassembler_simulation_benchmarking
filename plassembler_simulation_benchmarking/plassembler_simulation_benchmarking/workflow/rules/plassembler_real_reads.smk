@@ -14,8 +14,6 @@ rule run_plassembler_1_thread_real:
         chrom = get_length
     log:
         os.path.join(BENCHMARKS,"{sample}_plassembler_1_threads_real.txt")
-    benchmark:
-        os.path.join(BENCHMARKS,"{sample}_plassembler_1_threads_real_snakemake.txt")
     resources:
         mem_mb=32000,
         time=1000 # 300mins
@@ -43,8 +41,6 @@ rule run_plassembler_8_threads_real:
         chrom = get_length
     log:
         os.path.join(BENCHMARKS,"{sample}_plassembler_8_threads_real.txt")
-    benchmark:
-        os.path.join(BENCHMARKS,"{sample}_plassembler_8_threads_real_snakemake.txt")
     resources:
         mem_mb=32000,
         time=1000 # 300mins
@@ -73,8 +69,6 @@ rule run_plassembler_16_threads_real:
         chrom = get_length
     log:
         os.path.join(BENCHMARKS,"{sample}_plassembler_16_threads_real.txt")
-    benchmark:
-        os.path.join(BENCHMARKS,"{sample}_plassembler_16_threads_real_snakemake.txt")
     resources:
         mem_mb=32000,
         time=1000 # 300mins

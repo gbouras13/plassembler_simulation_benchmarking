@@ -1,3 +1,26 @@
+rule run_unicycler_1_threads_simulated:
+    input:
+        l = os.path.join(LR,"{sample}.fastq.gz"),
+        short_one = os.path.join(SR,"{sample}_R1.fastq.gz"),
+        short_two = os.path.join(SR,"{sample}_R2.fastq.gz")
+    output:
+        uni_fasta = os.path.join(UNICYCLER_OUTPUT_1_THREADS_SIMULATED,"{sample}", "assembly.fasta")
+    threads:
+        1
+    params:
+        out_dir = os.path.join(UNICYCLER_OUTPUT_1_THREADS_SIMULATED,"{sample}")
+    log:
+        os.path.join(BENCHMARKS,"{sample}_unicycler_1_threads_simulated.txt")
+    resources:
+        mem_mb=32000,
+        time=4000 
+    conda:
+        os.path.join('..', 'envs','plassembler.yaml')
+    shell:
+        '''
+        /usr/bin/time -h -l  -o {log} unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
+        '''
+
 rule run_unicycler_8_threads_simulated:
     input:
         l = os.path.join(LR,"{sample}.fastq.gz"),
@@ -9,16 +32,16 @@ rule run_unicycler_8_threads_simulated:
         8
     params:
         out_dir = os.path.join(UNICYCLER_OUTPUT_8_THREADS_SIMULATED,"{sample}")
-    benchmark:
-        repeat(os.path.join(BENCHMARKS,"{sample}_unicycler_8_threads_simulated.txt"),2)
+    log:
+        os.path.join(BENCHMARKS,"{sample}_unicycler_8_threads_simulated.txt")
     resources:
         mem_mb=32000,
-        time=300 # 300mins
+        time=4000 
     conda:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
+        /usr/bin/time -h -l  -o {log} unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
         '''
 
 rule run_unicycler_16_threads_simulated:
@@ -32,37 +55,16 @@ rule run_unicycler_16_threads_simulated:
         16
     params:
         out_dir = os.path.join(UNICYCLER_OUTPUT_8_THREADS_SIMULATED,"{sample}")
-    benchmark:
-        repeat(os.path.join(BENCHMARKS,"{sample}_unicycler_8_threads_simulated.txt"),2)
     resources:
         mem_mb=32000,
-        time=2000 
+        time=4000
+    log:
+        os.path.join(BENCHMARKS,"{sample}_plassembler_16_threads_simulated.txt")
     conda:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
-        '''
-
-rule run_unicycler_1_threads_simulated:
-    input:
-        l = os.path.join(LR,"{sample}.fastq.gz"),
-        short_one = os.path.join(SR,"{sample}_R1.fastq.gz"),
-        short_two = os.path.join(SR,"{sample}_R2.fastq.gz")
-    output:
-        uni_fasta = os.path.join(UNICYCLER_OUTPUT_8_THREADS_SIMULATED,"{sample}", "assembly.fasta")
-    threads:
-        1
-    params:
-        out_dir = os.path.join(UNICYCLER_OUTPUT_8_THREADS_SIMULATED,"{sample}")
-    resources:
-        mem_mb=32000,
-        time=2000
-    conda:
-        os.path.join('..', 'envs','plassembler.yaml')
-    shell:
-        '''
-        unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
+        /usr/bin/time -h -l  -o {log} unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads}
         '''
 
 

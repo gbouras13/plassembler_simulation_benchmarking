@@ -11,8 +11,6 @@ rule run_unicycler_1_threads_real:
         out_dir = os.path.join(UNICYCLER_OUTPUT_1_THREADS_REAL,"{sample}")
     log:
         os.path.join(BENCHMARKS,"{sample}_unicycler_1_threads_real.txt")
-    benchmark:
-        os.path.join(BENCHMARKS,"{sample}_unicycler_1_threads_real_snakemake.txt")
     resources:
         mem_mb=32000,
         time=6000 # 6000 mins
@@ -36,8 +34,6 @@ rule run_unicycler_8_threads_real:
         out_dir = os.path.join(UNICYCLER_OUTPUT_8_THREADS_REAL,"{sample}")
     log:
         os.path.join(BENCHMARKS,"{sample}_unicycler_8_threads_real.txt")
-    benchmark:
-        os.path.join(BENCHMARKS,"{sample}_unicycler_8_threads_real_snakemake.txt")
     resources:
         mem_mb=32000,
         time=4000 # 4000 mins
@@ -61,8 +57,6 @@ rule run_unicycler_16_threads_real:
         out_dir = os.path.join(UNICYCLER_OUTPUT_16_THREADS_REAL,"{sample}")
     log:
         os.path.join(BENCHMARKS,"{sample}_unicycler_16_threads_real.txt")
-    benchmark:
-        os.path.join(BENCHMARKS,"{sample}_unicycler_16_threads_real_snakemake.txt")
     resources:
         mem_mb=32000,
         time=4000 # 4000 mins
