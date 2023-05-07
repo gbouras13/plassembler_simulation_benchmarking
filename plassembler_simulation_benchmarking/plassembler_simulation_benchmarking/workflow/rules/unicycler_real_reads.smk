@@ -9,7 +9,7 @@ rule run_unicycler_1_threads_real:
         1
     params:
         out_dir = os.path.join(UNICYCLER_OUTPUT_1_THREADS_REAL,"{sample}")
-    log:
+    benchmark:
         os.path.join(BENCHMARKS,"{sample}_unicycler_1_threads_real.txt")
     resources:
         mem_mb=32000,
@@ -18,7 +18,7 @@ rule run_unicycler_1_threads_real:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        /usr/bin/time -h -l  -o {log}  unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads} 
+        unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads} 
         '''
 
 rule run_unicycler_8_threads_real:
@@ -32,7 +32,7 @@ rule run_unicycler_8_threads_real:
         8
     params:
         out_dir = os.path.join(UNICYCLER_OUTPUT_8_THREADS_REAL,"{sample}")
-    log:
+    benchmark:
         os.path.join(BENCHMARKS,"{sample}_unicycler_8_threads_real.txt")
     resources:
         mem_mb=32000,
@@ -41,7 +41,7 @@ rule run_unicycler_8_threads_real:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        /usr/bin/time -h -l  -o {log}  unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads} 
+        unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads} 
         '''
 
 rule run_unicycler_16_threads_real:
@@ -55,7 +55,7 @@ rule run_unicycler_16_threads_real:
         8
     params:
         out_dir = os.path.join(UNICYCLER_OUTPUT_16_THREADS_REAL,"{sample}")
-    log:
+    benchmark:
         os.path.join(BENCHMARKS,"{sample}_unicycler_16_threads_real.txt")
     resources:
         mem_mb=32000,
@@ -64,7 +64,7 @@ rule run_unicycler_16_threads_real:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        /usr/bin/time -h -l  -o {log}  unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads} 
+        unicycler -l {input.l} -1 {input.short_one} -2 {input.short_two} -o {params.out_dir} -t {threads} 
         '''
 
 

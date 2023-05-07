@@ -12,7 +12,7 @@ rule run_plassembler_1_thread_real:
         db =PLASSEMBLER_DB,
         out_dir = os.path.join(PLASSEMBLER_OUTPUT_1_THREADS_REAL,"{sample}"),
         chrom = get_length
-    log:
+    benchmark:
         os.path.join(BENCHMARKS,"{sample}_plassembler_1_threads_real.txt")
     resources:
         mem_mb=32000,
@@ -21,7 +21,7 @@ rule run_plassembler_1_thread_real:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        time -h -l  -o {log}  {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
+        {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
         -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f 
         '''
 
@@ -39,7 +39,7 @@ rule run_plassembler_8_threads_real:
         db =PLASSEMBLER_DB,
         out_dir = os.path.join(PLASSEMBLER_OUTPUT_8_THREADS_REAL,"{sample}"),
         chrom = get_length
-    log:
+    benchmark:
         os.path.join(BENCHMARKS,"{sample}_plassembler_8_threads_real.txt")
     resources:
         mem_mb=32000,
@@ -48,7 +48,7 @@ rule run_plassembler_8_threads_real:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        time -h -l  -o {log}  {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
+        {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
         -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f 
         '''
 
@@ -67,7 +67,7 @@ rule run_plassembler_16_threads_real:
         db =PLASSEMBLER_DB,
         out_dir = os.path.join(PLASSEMBLER_OUTPUT_16_THREADS_REAL,"{sample}"),
         chrom = get_length
-    log:
+    benchmark:
         os.path.join(BENCHMARKS,"{sample}_plassembler_16_threads_real.txt")
     resources:
         mem_mb=32000,
@@ -76,7 +76,7 @@ rule run_plassembler_16_threads_real:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
         '''
-        time -h -l  -o {log}  {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
+        {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
         -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f 
         '''
 
