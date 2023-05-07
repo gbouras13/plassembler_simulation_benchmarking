@@ -52,7 +52,7 @@ rule run_unicycler_16_threads_real:
     output:
         uni_fasta = os.path.join(UNICYCLER_OUTPUT_16_THREADS_REAL,"{sample}", "assembly.fasta")
     threads:
-        8
+        16
     params:
         out_dir = os.path.join(UNICYCLER_OUTPUT_16_THREADS_REAL,"{sample}")
     benchmark:
