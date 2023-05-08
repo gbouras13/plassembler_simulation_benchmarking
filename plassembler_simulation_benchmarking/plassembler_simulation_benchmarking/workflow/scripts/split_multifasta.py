@@ -35,4 +35,4 @@ def split_multifastq(input_fasta, out_dir):
             SeqIO.write(single_record, nt_fa, 'fasta')
 
 
-split_multifastq(snakemake.input[0], snakemake.params[0])
+split_multifastq(snakemake.input[0], snakemake.output[0])
