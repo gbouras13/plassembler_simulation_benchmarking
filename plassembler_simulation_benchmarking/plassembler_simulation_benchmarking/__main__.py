@@ -168,6 +168,27 @@ Available targets:
 """
 
 
+help_msg_assess_real = """
+\b
+CLUSTER EXECUTION:
+plassembler_simulation_benchmarking assess-real ... --profile [profile]
+For information on Snakemake profiles see:
+https://snakemake.readthedocs.io/en/stable/executing/cli.html#profiles
+\b
+RUN EXAMPLES:
+Required:           plassembler_simulation_benchmarking assess-real --input [file]
+Specify threads:    plassembler_simulation_benchmarking assess-real ... --threads [threads]
+Disable conda:      plassembler_simulation_benchmarking assess-real ... --no-use-conda 
+Change defaults:    plassembler_simulation_benchmarking assess-real ... --snake-default="-k --nolock"
+Add Snakemake args: plassembler_simulation_benchmarking assess-real ... --dry-run --keep-going --touch
+Specify targets:    plassembler_simulation_benchmarking assess-real ... all print_targets
+Available targets:
+    all             assemble everything (default)
+    print_targets   List available targets
+"""
+
+
+
 #### simulate
 
 @click.command(
