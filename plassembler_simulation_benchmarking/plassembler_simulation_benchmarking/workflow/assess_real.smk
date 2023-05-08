@@ -28,16 +28,16 @@ include: "rules/directories.smk"
 
 # Parse the samples and read files
 include: "rules/samples.smk"
-dictReads = parseSamplesSimulate(CSV)
+dictReads = parseSamplesReal(CSV)
 SAMPLES = list(dictReads.keys())
 
 # Import rules and functions
 include: "rules/targets.smk"
 include: "rules/generate_quast_reference_directory.smk"
-include: "rules/quast_simulated.smk"
+include: "rules/quast_real.smk"
 
 
 rule all:
     input:
-        SimulateQuastTargetFiles
+        RealQuastTargetFiles
         

@@ -1,99 +1,156 @@
-rule quast_8_threads_simulated:
+# plassembler 
+rule quast_8_threads_plassembler_simulated:
     input:
-        plas_file = os.path.join(PLASSEMBLER_OUTPUT_8_THREADS_SIMULATED,"{sample}", "{sample}_plasmids.fasta")
+        plas_file = os.path.join(PLASSEMBLER_OUTPUT_8_THREADS_SIMULATED,"{sample}", "{sample}_plasmids.fasta"),
+        reference = os.path.join(QUAST_REFS,"{sample}")
     output:
-        plas_file = os.path.join(PLASSEMBLER_OUTPUT_8_THREADS_SIMULATED,"{sample}", "{sample}_plasmids.fasta")
-    threads:
-        8
-    params:
-        bindir = PLASSEMBLER_BIN,
-        db =PLASSEMBLER_DB,
-        out_dir = os.path.join(PLASSEMBLER_OUTPUT_8_THREADS_SIMULATED,"{sample}"),
-        chrom = get_length
-    log:
-        os.path.join(BENCHMARKS,"{sample}_plassembler_8_threads_simulated.txt")
-    resources:
-        mem_mb=32000,
-        time=1000 # 1000mins
-    conda:
-        os.path.join('..', 'envs','plassembler.yaml')
-    shell:
-        '''
-        /usr/bin/time -h -l  -o {log} {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} \
-         -2 {input.short_two} -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f
-
-         metaquast  -r cav1217_refs  \
-         -o quast_test_output \
-          plassembler_plasmids.fasta
-
-
-        '''
-
-
-rule quast_1_threads_simulated:
-    input:
-        l = os.path.join(LR,"{sample}.fastq.gz"),
-        short_one = os.path.join(SR,"{sample}_R1.fastq.gz"),
-        short_two = os.path.join(SR,"{sample}_R2.fastq.gz")
-    output:
-        plas_file = os.path.join(PLASSEMBLER_OUTPUT_1_THREADS_SIMULATED,"{sample}", "{sample}_plasmids.fasta")
+        quast_report = os.path.join(QUAST_PLASSEMBLER_8_THREADS_SIMULATED,"{sample}", "report.html")
     threads:
         1
-    params:
-        bindir = PLASSEMBLER_BIN,
-        db =PLASSEMBLER_DB,
-        out_dir = os.path.join(PLASSEMBLER_OUTPUT_1_THREADS_SIMULATED,"{sample}"),
-        chrom = get_length
     resources:
-        mem_mb=32000,
-        time=2000 # 2000mins
-    log:
-        os.path.join(BENCHMARKS,"{sample}_plassembler_1_threads_simulated.txt")
+        mem_mb=4000,
+        time=120 
+    params:
+        out_dir = os.path.join(QUAST_PLASSEMBLER_8_THREADS_SIMULATED,"{sample}")
     conda:
-        os.path.join('..', 'envs','plassembler.yaml')
+        os.path.join('..', 'envs','quast.yaml')
     shell:
         '''
-        /usr/bin/time -h -l  -o {log} {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} \
-         -2 {input.short_two} -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f
+        metaquast -r {input.reference} \
+        -o {params.out_dir} \
+        {input.plas_file}
         '''
 
-rule quast_16_threads_simulated:
+
+rule quast_1_threads_plassembler_simulated:
     input:
-        l = os.path.join(LR,"{sample}.fastq.gz"),
-        short_one = os.path.join(SR,"{sample}_R1.fastq.gz"),
-        short_two = os.path.join(SR,"{sample}_R2.fastq.gz")
+        plas_file = os.path.join(PLASSEMBLER_OUTPUT_1_THREADS_SIMULATED,"{sample}", "{sample}_plasmids.fasta"),
+        reference = os.path.join(QUAST_REFS,"{sample}")
     output:
-        plas_file = os.path.join(PLASSEMBLER_OUTPUT_16_THREADS_SIMULATED,"{sample}", "{sample}_plasmids.fasta")
+        quast_report = os.path.join(QUAST_PLASSEMBLER_1_THREADS_SIMULATED,"{sample}", "report.html")
     threads:
-        16
-    params:
-        bindir = PLASSEMBLER_BIN,
-        db =PLASSEMBLER_DB,
-        out_dir = os.path.join(PLASSEMBLER_OUTPUT_16_THREADS_SIMULATED,"{sample}"),
-        chrom = get_length
+        1
     resources:
-        mem_mb=32000,
-        time=2000 # 2000mins
-    log:
-        os.path.join(BENCHMARKS,"{sample}_plassembler_16_threads_simulated.txt")
+        mem_mb=4000,
+        time=120 
+    params:
+        out_dir = os.path.join(QUAST_PLASSEMBLER_1_THREADS_SIMULATED,"{sample}")
     conda:
-        os.path.join('..', 'envs','plassembler.yaml')
+        os.path.join('..', 'envs','quast.yaml')
     shell:
         '''
-        /usr/bin/time -h -l  -o {log} {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} \
-         -2 {input.short_two} -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f
+        metaquast -r {input.reference} \
+        -o {params.out_dir} \
+        {input.plas_file}
         '''
+
+
+rule quast_16_threads_plassembler_simulated:
+    input:
+        plas_file = os.path.join(PLASSEMBLER_OUTPUT_16_THREADS_SIMULATED,"{sample}", "{sample}_plasmids.fasta"),
+        reference = os.path.join(QUAST_REFS,"{sample}")
+    output:
+        quast_report = os.path.join(QUAST_PLASSEMBLER_16_THREADS_SIMULATED,"{sample}", "report.html")
+    threads:
+        1
+    resources:
+        mem_mb=4000,
+        time=120 
+    params:
+        out_dir = os.path.join(QUAST_PLASSEMBLER_16_THREADS_SIMULATED,"{sample}")
+    conda:
+        os.path.join('..', 'envs','quast.yaml')
+    shell:
+        '''
+        metaquast -r {input.reference \
+        -o {params.out_dir} \
+        {input.plas_file}
+        '''
+
+# unicycler 
+
+rule quast_8_threads_unicycler_simulated:
+    input:
+        plas_file = os.path.join(UNICYCLER_OUTPUT_8_THREADS_SIMULATED,"{sample}", "assembly.fasta"),
+        reference = os.path.join(QUAST_REFS,"{sample}")
+    output:
+        quast_report = os.path.join(QUAST_UNICYCLER_8_THREADS_SIMULATED,"{sample}", "report.html")
+    threads:
+        1
+    resources:
+        mem_mb=4000,
+        time=120 
+    params:
+        out_dir = os.path.join(QUAST_UNICYCLER_8_THREADS_SIMULATED,"{sample}")
+    conda:
+        os.path.join('..', 'envs','quast.yaml')
+    shell:
+        '''
+        metaquast -r {input.reference} \
+        -o {params.out_dir} \
+        {input.plas_file}
+        '''
+
+
+
+rule quast_1_threads_unicycler_simulated:
+    input:
+        plas_file = os.path.join(UNICYCLER_OUTPUT_1_THREADS_SIMULATED,"{sample}", "assembly.fasta"),
+        reference = os.path.join(QUAST_REFS,"{sample}")
+    output:
+        quast_report = os.path.join(QUAST_UNICYCLER_1_THREADS_SIMULATED,"{sample}", "report.html")
+    threads:
+        1
+    resources:
+        mem_mb=4000,
+        time=120 
+    params:
+        out_dir = os.path.join(QUAST_UNICYCLER_1_THREADS_SIMULATED,"{sample}")
+    conda:
+        os.path.join('..', 'envs','quast.yaml')
+    shell:
+        '''
+        metaquast -r {input.reference} \
+        -o {params.out_dir} \
+        {input.plas_file}
+        '''
+
+rule quast_16_threads_unicycler_simulated:
+    input:
+        plas_file = os.path.join(UNICYCLER_OUTPUT_16_THREADS_SIMULATED,"{sample}", "assembly.fasta"),
+        reference = os.path.join(QUAST_REFS,"{sample}")
+    output:
+        quast_report = os.path.join(QUAST_UNICYCLER_16_THREADS_SIMULATED,"{sample}", "report.html")
+    threads:
+        1
+    resources:
+        mem_mb=4000,
+        time=120 
+    params:
+        out_dir = os.path.join(QUAST_UNICYCLER_16_THREADS_SIMULATED,"{sample}")
+    conda:
+        os.path.join('..', 'envs','quast.yaml')
+    shell:
+        '''
+        metaquast -r {input.reference} \
+        -o {params.out_dir} \
+        {input.plas_file}
+        '''
+
 
 
 #### aggregation rule
-rule aggr_plassembler_simulated:
+rule aggr_quast_simulated:
     """aggregate lr"""
     input:
-        expand(os.path.join(PLASSEMBLER_OUTPUT_1_THREADS,"{sample}", "{sample}_plasmids.fasta"), sample = SAMPLES),
-        expand(os.path.join(PLASSEMBLER_OUTPUT_8_THREADS,"{sample}", "{sample}_plasmids.fasta"), sample = SAMPLES),
-        expand(os.path.join(PLASSEMBLER_OUTPUT_16_THREADS,"{sample}", "{sample}_plasmids.fasta"), sample = SAMPLES)
+        expand(os.path.join(QUAST_PLASSEMBLER_16_THREADS_SIMULATED,"{sample}", "report.html"), sample = SAMPLES),
+        expand(os.path.join(QUAST_PLASSEMBLER_1_THREADS_SIMULATED,"{sample}", "report.html"), sample = SAMPLES),
+        expand(os.path.join(QUAST_PLASSEMBLER_8_THREADS_SIMULATED,"{sample}", "report.html"), sample = SAMPLES),
+        expand(os.path.join(QUAST_UNICYCLER_16_THREADS_SIMULATED,"{sample}", "report.html"), sample = SAMPLES),
+        expand(os.path.join(QUAST_UNICYCLER_1_THREADS_SIMULATED,"{sample}", "report.html"), sample = SAMPLES),
+        expand(os.path.join(QUAST_UNICYCLER_8_THREADS_SIMULATED,"{sample}", "report.html"), sample = SAMPLES),
     output:
-        os.path.join(FLAGS, "plassembler_simulated_aggr.txt")
+        os.path.join(FLAGS, "quast_simulated_aggr.txt")
     threads:
         1
     shell:

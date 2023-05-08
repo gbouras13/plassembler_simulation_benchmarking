@@ -148,6 +148,25 @@ Available targets:
     print_targets   List available targets
 """
 
+help_msg_assess_simulated = """
+\b
+CLUSTER EXECUTION:
+plassembler_simulation_benchmarking assess-simulated ... --profile [profile]
+For information on Snakemake profiles see:
+https://snakemake.readthedocs.io/en/stable/executing/cli.html#profiles
+\b
+RUN EXAMPLES:
+Required:           plassembler_simulation_benchmarking assess-simulated --input [file]
+Specify threads:    plassembler_simulation_benchmarking assess-simulated ... --threads [threads]
+Disable conda:      plassembler_simulation_benchmarking assess-simulated ... --no-use-conda 
+Change defaults:    plassembler_simulation_benchmarking assess-simulated ... --snake-default="-k --nolock"
+Add Snakemake args: plassembler_simulation_benchmarking assess-simulated ... --dry-run --keep-going --touch
+Specify targets:    plassembler_simulation_benchmarking assess-simulated ... all print_targets
+Available targets:
+    all             assemble everything (default)
+    print_targets   List available targets
+"""
+
 
 #### simulate
 
@@ -213,6 +232,48 @@ def assemble_real(_input, output, log, **kwargs):
         merge_config=merge_config,
         **kwargs)
 
+# assess simulated
+
+@click.command(
+    epilog=help_msg_assess_simulated,
+    context_settings=dict(
+        help_option_names=["-h", "--help"], ignore_unknown_options=True
+    ))
+@click.option("--input", "_input", help="Input file/directory", type=str, required=True)
+@common_options
+def assess_simulated(_input, output, log, **kwargs):
+    """asssess simulated assembly output in plassembler_simulation_benchmarking"""
+    # Config to add or update in configfile
+    merge_config = {"input": _input, "output": output, "log": log}
+    """Install databases"""
+    run_snakemake(
+        snakefile_path=snake_base(os.path.join('workflow','assess_simulated.smk')),
+        merge_config=merge_config,
+        **kwargs)
+
+
+# assess real
+
+@click.command(
+    epilog=help_msg_assess_real,
+    context_settings=dict(
+        help_option_names=["-h", "--help"], ignore_unknown_options=True
+    ))
+@click.option("--input", "_input", help="Input file/directory", type=str, required=True)
+@common_options
+def assess_real(_input, output, log, **kwargs):
+    """asssess real assembly output in plassembler_simulation_benchmarking"""
+    # Config to add or update in configfile
+    merge_config = {"input": _input, "output": output, "log": log}
+    """Install databases"""
+    run_snakemake(
+        snakefile_path=snake_base(os.path.join('workflow','assess_real.smk')),
+        merge_config=merge_config,
+        **kwargs)
+
+
+
+
 
 
 @click.command()
@@ -231,6 +292,7 @@ def citation(**kwargs):
 cli.add_command(simulate)
 cli.add_command(assemble_simulated)
 cli.add_command(assemble_real)
+cli.add_command(assess_simulated)
 cli.add_command(config)
 cli.add_command(citation)
 
