@@ -59,5 +59,5 @@ plassembler_simulation_benchmarking assess-simulated --input benchmarking_simula
 ### assess real
 
 ```
-plassembler_simulation_benchmarking assess-simulated --input benchmarking_real.csv --output ../real_benchmarking --threads 16
+plassembler_simulation_benchmarking assess-real --input benchmarking_real.csv --output ../real_benchmarking --threads 16
 ```
