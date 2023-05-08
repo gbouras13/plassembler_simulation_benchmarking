@@ -314,6 +314,7 @@ cli.add_command(simulate)
 cli.add_command(assemble_simulated)
 cli.add_command(assemble_real)
 cli.add_command(assess_simulated)
+cli.add_command(assess_real)
 cli.add_command(config)
 cli.add_command(citation)
 
