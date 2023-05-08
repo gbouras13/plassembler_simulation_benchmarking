@@ -25,5 +25,5 @@ os.path.join(FLAGS, "quast_simulated_aggr.txt"),
 
 
 RealQuastTargetFiles = [os.path.join(FLAGS, "quast_ref_aggr.txt"),
-os.path.join(FLAGS, "real_simulated_aggr.txt"),
+os.path.join(FLAGS, "quast_real_aggr.txt"),
     ]

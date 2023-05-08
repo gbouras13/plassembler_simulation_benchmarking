@@ -18,7 +18,7 @@ plassembler_simulation_benchmarking --help
 plassembler_simulation_benchmarking simulate --help
 ```
 
-### run the simulations 
+### Set up the env
 
 ```
 
@@ -28,6 +28,11 @@ cd $run_dir
 
 conda activate plassembler_benchmarking
 
+```
+
+### Simulate reads
+
+```
 plassembler_simulation_benchmarking simulate --input benchmarking_simulate.csv --output ../simulated_benchmarking --threads 16
 ```
 
@@ -45,5 +50,14 @@ plassembler_simulation_benchmarking assemble-real --input benchmarking_real.csv 
 ```
 
 
+### Assess simulations
 
+```
+plassembler_simulation_benchmarking assess-simulated --input benchmarking_simulate.csv --output ../simulated_benchmarking --threads 16
+```
 
+### assess real
+
+```
+plassembler_simulation_benchmarking assess-simulated --input benchmarking_real.csv --output ../real_benchmarking --threads 16
+```
