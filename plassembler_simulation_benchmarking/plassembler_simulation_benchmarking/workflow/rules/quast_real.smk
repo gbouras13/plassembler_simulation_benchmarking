@@ -62,7 +62,7 @@ rule quast_16_threads_plassembler_REAL:
         os.path.join('..', 'envs','quast.yaml')
     shell:
         '''
-        metaquast -r {input.reference \
+        metaquast -r {input.reference} \
         -o {params.out_dir} \
         {input.plas_file}
         '''
