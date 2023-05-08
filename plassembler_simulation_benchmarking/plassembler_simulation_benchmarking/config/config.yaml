@@ -8,5 +8,7 @@ threads: 16
 PLASSEMBLER_BIN : "/data/plassembler_benchmarking/plassembler/bin"
 PLASSEMBLER_DB : "/data/plassembler_benchmarking/plassembler_db"
 
+# raw mode
+raw: "raw"
 
 
