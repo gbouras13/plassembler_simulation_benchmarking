@@ -2,7 +2,7 @@ rule split_reference:
     input:
         os.path.join(GENOME,"{sample}.fasta")
     output:
-        os.path.join(QUAST_REFS,"{sample}")
+        directory(os.path.join(QUAST_REFS,"{sample}"))
     threads:
         1
     resources:
