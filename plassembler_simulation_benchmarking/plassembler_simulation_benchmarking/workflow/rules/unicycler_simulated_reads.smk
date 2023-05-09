@@ -59,7 +59,7 @@ rule run_unicycler_16_threads_simulated:
         mem_mb=32000,
         time=4000
     benchmark:
-        os.path.join(BENCHMARKS,"{sample}_plassembler_16_threads_simulated.txt")
+        os.path.join(BENCHMARKS,"{sample}_unicycler_16_threads_simulated.txt")
     conda:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
