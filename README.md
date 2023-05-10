@@ -1,7 +1,7 @@
 # Plassembler Simulation & Benchmarking
 Benchmarking and Simulation Scripts for Plassembler
 
-This directory contains the pipeline used to benchmarking [Plassembler](https://github.com/gbouras13/plassembler).
+This directory contains the pipeline used to benchmark [Plassembler](https://github.com/gbouras13/plassembler).
 
 I used [Snaketool](https://github.com/beardymcjohnface/Snaketool) to make this, and would highly recommend it!
 
