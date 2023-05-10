@@ -17,86 +17,87 @@ plassembler_simulation_benchmarking simulate --help
 
 ```
 
-Wick, Houtak and Mathers datasets
+Wick _et al._, Houtak _et al._ and Mathers _et al._ datasets
 ======
 
 All outputs will be in a directories called `simulated_benchmarking` and `real_benchmarking`.
 
-The first will contain `SR` and `LR` directories for short and long simulated reads. 
+`simulated_benchmarking` will contain `SR` and `LR` directories for short and long simulated reads, and `SIMULATED` containing the Plassembler and Unicycler outputs for each thread count.
 
-Both will contain `BENCHMARKS` containing the time/memory etc benchmarks, `SIMULATED` or `REAL` contain the Plassembler and Unicycler outputs for each thread count.
+`real_benchmarking` will contain  `REAL` containing the Plassembler and Unicycler outputs for each thread count.
 
-`QUAST` will contain the Quast outputs comparing Plassembler and Unicycler to the ground truth plasmid assemblies.
+Both will contain `BENCHMARKS` containing the time/memory etc benchmarks and `QUAST`, which will contain the Quast outputs comparing Plassembler and Unicycler to the ground truth plasmid assemblies.
 
 
-### Simulate reads 
+### Simulate Reads 
 
 ```
 cd plassembler_simulation_benchmarking
 plassembler_simulation_benchmarking simulate --input benchmarking_simulate.csv --output ../simulated_benchmarking --threads 16
 ```
 
-### Assemble simulations
+### Assemble Simulated Reads
 
 ```
 plassembler_simulation_benchmarking assemble-simulated --input benchmarking_simulate.csv --output ../simulated_benchmarking --threads 16
 ```
 
-### Assemble real
+### Assemble Real Reads
 
 ```
 plassembler_simulation_benchmarking assemble-real --input benchmarking_real.csv  --output ../real_benchmarking --threads 16
 ```
 
-### Assess simulations
+### Assess Simulated Read Outputs with Quast
 
 ```
 plassembler_simulation_benchmarking assess-simulated --input benchmarking_simulate.csv --output ../simulated_benchmarking --threads 16
 ```
 
-### assess real
+### Assess Real Read Outputs with Quast
 
 ```
 plassembler_simulation_benchmarking assess-real --input benchmarking_real.csv --output ../real_benchmarking --threads 16
 ```
 
-De Maio
+De Maio _et al._ Dataset
 ======
 
 All outputs will be in a directories called `simulated_benchmarking_de_maio` and `real_benchmarking_de_maio`.
 
-The first will contain `SR` and `LR` directories for short and long simulated reads. 
+`simulated_benchmarking_de_maio` will contain `SR` and `LR` directories for short and long simulated reads, and `SIMULATED` containing the Plassembler and Unicycler outputs for each thread count.
 
-Both will contain `BENCHMARKS` containing the time/memory etc benchmarks, `SIMULATED` or `REAL` contain the Plassembler and Unicycler outputs for each thread count.
+`real_benchmarking_de_maio` will contain  `REAL` containing the Plassembler and Unicycler outputs for each thread count.
 
-`QUAST` will contain the Quast outputs comparing Plassembler and Unicycler to the ground truth plasmid assemblies.
+Both will contain `BENCHMARKS` containing the time/memory etc benchmarks and `QUAST`, which will contain the Quast outputs comparing Plassembler and Unicycler to the ground truth plasmid assemblies.
 
-### Simulate reads
+
+### Simulate Reads
 
 ```
 cd plassembler_simulation_benchmarking
 plassembler_simulation_benchmarking simulate --input benchmarking_simulate_demaio.csv --output ../simulated_benchmarking_de_maio --threads 16
 ```
 
-### Assemble Simulated reads
+### Assemble Simulated Reads
 
 ```
 plassembler_simulation_benchmarking assemble-simulated --input benchmarking_simulate_demaio.csv --output ../simulated_benchmarking_de_maio --threads 16
 ```
 
-### Assemble Real reads
+### Assemble Real Reads
 
 ```
 plassembler_simulation_benchmarking assemble-real --input benchmarking_real_demaio.csv --output ../real_benchmarking_de_maio --threads 16
 ```
 
-### Assess simulations
+### Assess Simulated Read Outputs with Quast
 
 ```
 plassembler_simulation_benchmarking assess-simulated --input benchmarking_simulate.csv --output ../simulated_benchmarking_de_maio --threads 16
 ```
 
-### assess real
+### Assess Real Read Outputs with Quast
 
 ```
 plassembler_simulation_benchmarking assess-real --input benchmarking_real.csv --output ../real_benchmarking_de_maio --threads 16
