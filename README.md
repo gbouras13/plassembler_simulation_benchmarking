@@ -3,18 +3,23 @@ Benchmarking and Simulation Scripts for Plassembler
 
 This directory contains the pipeline used to benchmarking [Plassembler](https://github.com/gbouras13/plassembler).
 
+I used [Snaketool](https://github.com/beardymcjohnface/Snaketool) to make this, and would highly recommend it!
+
 It should work 'out of the box' for the simulated reads. For the real read sets, you will need to change the `csv` input files in this directory with the correct FASTQ paths of the required files on your system. These FASTQ reads can be found in the Zenodo repository [here](sfsdfg), or by following the instructions outlined [here](https://github.com/gbouras13/plassembler/blob/1.0.0/docs/fastqs.md). 
 
 
-# Install the conda env
+# Download plassembler_simulation_benchmarking and install it in a conda env
 
 ```
 conda create -n plassembler_benchmarking pip
 conda activate plassembler_benchmarking
+
+# download the repository
+git clone "https://github.com/gbouras13/plassembler_simulation_benchmarking"
+cd plassembler_simulation_benchmarking
+
 pip install -e .
 plassembler_simulation_benchmarking --help
-plassembler_simulation_benchmarking simulate --help
-
 ```
 
 Wick _et al._, Houtak _et al._ and Mathers _et al._ datasets
@@ -32,7 +37,6 @@ Both will contain `BENCHMARKS` containing the time/memory etc benchmarks and `QU
 ### Simulate Reads 
 
 ```
-cd plassembler_simulation_benchmarking
 plassembler_simulation_benchmarking simulate --input benchmarking_simulate.csv --output ../simulated_benchmarking --threads 16
 ```
 
@@ -75,7 +79,6 @@ Both will contain `BENCHMARKS` containing the time/memory etc benchmarks and `QU
 ### Simulate Reads
 
 ```
-cd plassembler_simulation_benchmarking
 plassembler_simulation_benchmarking simulate --input benchmarking_simulate_demaio.csv --output ../simulated_benchmarking_de_maio --threads 16
 ```
 
