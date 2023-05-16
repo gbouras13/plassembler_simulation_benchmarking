@@ -2,7 +2,7 @@ rule run_raven_1_thread:
     input:
         l = get_long
     output:
-        gfa = os.path.join(RAVEN_OUTPUT_1_THREADS_REAL,"{sample}", "{sample}.gfa")
+        gfa = os.path.join(RAVEN_OUTPUT_1_THREADS_REAL,"{sample}", "{sample}.gfa"),
         fasta = os.path.join(RAVEN_OUTPUT_1_THREADS_REAL,"{sample}", "{sample}.fasta")        
     threads:
         1
@@ -22,7 +22,7 @@ rule run_raven_8_thread:
     input:
         l = get_long
     output:
-        gfa = os.path.join(RAVEN_OUTPUT_8_THREADS_REAL,"{sample}", "{sample}.gfa")
+        gfa = os.path.join(RAVEN_OUTPUT_8_THREADS_REAL,"{sample}", "{sample}.gfa"),
         fasta = os.path.join(RAVEN_OUTPUT_8_THREADS_REAL,"{sample}", "{sample}.fasta")        
     threads:
         8
@@ -42,7 +42,7 @@ rule run_raven_16_thread:
     input:
         l = get_long
     output:
-        gfa = os.path.join(RAVEN_OUTPUT_16_THREADS_REAL,"{sample}", "{sample}.gfa")
+        gfa = os.path.join(RAVEN_OUTPUT_16_THREADS_REAL,"{sample}", "{sample}.gfa"),
         fasta = os.path.join(RAVEN_OUTPUT_16_THREADS_REAL,"{sample}", "{sample}.fasta")        
     threads:
         16
