@@ -58,6 +58,7 @@ if RAW == 'raw':
 else:
     include: "rules/plassembler_real_reads.smk"
 
+include: "rules/plassembler_real_reads_non_det.smk"
 include: "rules/unicycler_real_reads.smk"
 
 
