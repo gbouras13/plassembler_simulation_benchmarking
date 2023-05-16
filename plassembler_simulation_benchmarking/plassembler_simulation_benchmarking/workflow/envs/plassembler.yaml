@@ -7,4 +7,5 @@ dependencies:
   - pysam
   - chopper
   - raven-assembler
+  - unicycler==0.5.0
 
