@@ -22,7 +22,7 @@ rule run_plassembler_1_thread_real_non_det:
         '''
         # using v 1.0.0 from bioconda
         plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
-        -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f -r
+        -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f -r --no_subsample
         '''
 
 rule run_plassembler_8_thread_real_non_det:
@@ -49,7 +49,7 @@ rule run_plassembler_8_thread_real_non_det:
         '''
         # using v 1.0.0 from bioconda
         plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
-        -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f -r
+        -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f -r --no_subsample
         '''
 
 
@@ -77,7 +77,7 @@ rule run_plassembler_16_thread_real_non_det:
         '''
         # using v 1.0.0 from bioconda
         plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
-        -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f -r
+        -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f -r --no_subsample
         '''
 
 
