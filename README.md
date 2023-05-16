@@ -104,7 +104,7 @@ plassembler_simulation_benchmarking assemble-real --input benchmarking_real_dema
 ### Assess Simulated Read Outputs with Quast
 
 ```
-plassembler_simulation_benchmarking assess-simulated --input benchmarking_simulate.csv --output ../simulated_benchmarking_de_maio --threads 16
+plassembler_simulation_benchmarking assess-simulated --input benchmarking_simulate_demaio.csv --output ../simulated_benchmarking_de_maio --threads 16
 ```
 
 ### Assess Real Read Outputs with Quast
