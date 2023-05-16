@@ -188,6 +188,25 @@ Available targets:
 """
 
 
+help_msg_raven = """
+\b
+CLUSTER EXECUTION:
+plassembler_simulation_benchmarking raven ... --profile [profile]
+For information on Snakemake profiles see:
+https://snakemake.readthedocs.io/en/stable/executing/cli.html#profiles
+\b
+RUN EXAMPLES:
+Required:           plassembler_simulation_benchmarking raven --input [file]
+Specify threads:    plassembler_simulation_benchmarking raven ... --threads [threads]
+Disable conda:      plassembler_simulation_benchmarking raven ... --no-use-conda 
+Change defaults:    plassembler_simulation_benchmarking raven ... --snake-default="-k --nolock"
+Add Snakemake args: plassembler_simulation_benchmarking raven ... --dry-run --keep-going --touch
+Specify targets:    plassembler_simulation_benchmarking raven ... all print_targets
+Available targets:
+    all             assemble everything (default)
+    print_targets   List available targets
+"""
+
 
 #### simulate
 
@@ -293,6 +312,25 @@ def assess_real(_input, output, log, **kwargs):
         **kwargs)
 
 
+# raven
+
+@click.command(
+    epilog=help_msg_assess_real,
+    context_settings=dict(
+        help_option_names=["-h", "--help"], ignore_unknown_options=True
+    ))
+@click.option("--input", "_input", help="Input file/directory", type=str, required=True)
+@common_options
+def raven(_input, output, log, **kwargs):
+    """test raven in plassembler_simulation_benchmarking"""
+    # Config to add or update in configfile
+    merge_config = {"input": _input, "output": output, "log": log}
+    """Install databases"""
+    run_snakemake(
+        snakefile_path=snake_base(os.path.join('workflow','raven.smk')),
+        merge_config=merge_config,
+        **kwargs)
+
 
 
 
@@ -315,6 +353,7 @@ cli.add_command(assemble_simulated)
 cli.add_command(assemble_real)
 cli.add_command(assess_simulated)
 cli.add_command(assess_real)
+cli.add_command(raven)
 cli.add_command(config)
 cli.add_command(citation)
 

@@ -2,9 +2,5 @@ channels:
   - conda-forge
   - bioconda
 dependencies:
-  - plassembler
-  - rasusa
-  - pysam
-  - chopper
   - raven-assembler
 
