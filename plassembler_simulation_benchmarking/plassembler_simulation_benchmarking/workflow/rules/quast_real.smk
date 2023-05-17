@@ -146,9 +146,9 @@ rule aggr_quast_REAL:
         expand(os.path.join(QUAST_PLASSEMBLER_16_THREADS_REAL,"{sample}", "report.html"), sample = SAMPLES),
         expand(os.path.join(QUAST_PLASSEMBLER_1_THREADS_REAL,"{sample}", "report.html"), sample = SAMPLES),
         expand(os.path.join(QUAST_PLASSEMBLER_8_THREADS_REAL,"{sample}", "report.html"), sample = SAMPLES),
-        expand(os.path.join(QUAST_UNICYCLER_16_THREADS_REAL,"{sample}", "report.html"), sample = SAMPLES),
-        expand(os.path.join(QUAST_UNICYCLER_1_THREADS_REAL,"{sample}", "report.html"), sample = SAMPLES),
-        expand(os.path.join(QUAST_UNICYCLER_8_THREADS_REAL,"{sample}", "report.html"), sample = SAMPLES),
+        #expand(os.path.join(QUAST_UNICYCLER_16_THREADS_REAL,"{sample}", "report.html"), sample = SAMPLES),
+        #expand(os.path.join(QUAST_UNICYCLER_1_THREADS_REAL,"{sample}", "report.html"), sample = SAMPLES),
+        #expand(os.path.join(QUAST_UNICYCLER_8_THREADS_REAL,"{sample}", "report.html"), sample = SAMPLES),
     output:
         os.path.join(FLAGS, "quast_real_aggr.txt")
     threads:
