@@ -16,7 +16,6 @@ os.path.join(FLAGS, "plassembler_simulated_aggr.txt"),
 
 AssembleRealTargetFiles = [
 os.path.join(FLAGS, "plassembler_real_aggr.txt"),
-#os.path.join(FLAGS, "plassembler_non_det_aggr.txt")
 #os.path.join(FLAGS, "unicycler_real_aggr.txt")
 ]
 
