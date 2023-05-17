@@ -25,7 +25,7 @@ rule run_raven_4_thread:
         gfa = os.path.join(RAVEN_OUTPUT_4_THREADS_REAL,"{sample}", "{sample}.gfa"),
         fasta = os.path.join(RAVEN_OUTPUT_4_THREADS_REAL,"{sample}", "{sample}.fasta")        
     threads:
-        1
+        4
     benchmark:
         os.path.join(BENCHMARKS,"{sample}_raven_4_threads_real.txt")
     resources:
