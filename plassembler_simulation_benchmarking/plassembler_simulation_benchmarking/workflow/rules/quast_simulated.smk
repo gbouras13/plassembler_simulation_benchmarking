@@ -69,6 +69,8 @@ rule quast_16_threads_plassembler_simulated:
 
 # unicycler 
 
+
+
 rule quast_8_threads_unicycler_simulated:
     input:
         plas_file = os.path.join(UNICYCLER_OUTPUT_8_THREADS_SIMULATED,"{sample}", "assembly.fasta"),
@@ -95,7 +97,7 @@ rule quast_8_threads_unicycler_simulated:
 
 rule quast_1_threads_unicycler_simulated:
     input:
-        plas_file = os.path.join(UNICYCLER_OUTPUT_1_THREADS_SIMULATED,"{sample}", "assembly.fasta"),
+        plas_file = os.path.join(UNICYCLER_PLASMIDS_ONLY_1_THREADS_SIM,"{sample}", "assembly.fasta"),
         reference = os.path.join(QUAST_REFS,"{sample}")
     output:
         quast_report = os.path.join(QUAST_UNICYCLER_1_THREADS_SIMULATED,"{sample}", "report.html")
@@ -117,7 +119,7 @@ rule quast_1_threads_unicycler_simulated:
 
 rule quast_16_threads_unicycler_simulated:
     input:
-        plas_file = os.path.join(UNICYCLER_OUTPUT_16_THREADS_SIMULATED,"{sample}", "assembly.fasta"),
+        plas_file = os.path.join(UNICYCLER_PLASMIDS_ONLY_16_THREADS_SIM,"{sample}", "assembly.fasta"),
         reference = os.path.join(QUAST_REFS,"{sample}")
     output:
         quast_report = os.path.join(QUAST_UNICYCLER_16_THREADS_SIMULATED,"{sample}", "report.html")
