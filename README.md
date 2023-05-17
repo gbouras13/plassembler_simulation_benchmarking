@@ -46,11 +46,14 @@ plassembler_simulation_benchmarking simulate --input benchmarking_simulate.csv -
 plassembler_simulation_benchmarking assemble-simulated --input benchmarking_simulate.csv --output ../simulated_benchmarking --threads 16
 ```
 
+plassembler_simulation_benchmarking assemble-real --input benchmarking_simulate_1.1.0.csv --output ../simulated_benchmarking_1.1.0 --threads 16
+
 ### Assemble Real Reads
 
 ```
 plassembler_simulation_benchmarking assemble-real --input benchmarking_real.csv  --output ../real_benchmarking --threads 16
 ```
+
 
 ### Test Raven
 
@@ -102,18 +105,29 @@ plassembler_simulation_benchmarking simulate --input benchmarking_simulate_demai
 
 ```
 plassembler_simulation_benchmarking assemble-simulated --input benchmarking_simulate_demaio.csv --output ../simulated_benchmarking_de_maio --threads 16
+
+
+
+
+plassembler_simulation_benchmarking assemble-real --input benchmarking_simulate_demaio_1.1.0.csv --output ../simulated_benchmarking_de_maio_1.1.0 --threads 16
 ```
 
 ### Assemble Real Reads
 
 ```
-plassembler_simulation_benchmarking assemble-real --input benchmarking_real_demaio.csv --output ../real_benchmarking_de_maio --threads 16
+
 ```
+
+
+plassembler_simulation_benchmarking assemble-real --input benchmarking_real_demaio.csv --output ../real_benchmarking_de_maio_1.1.0 --threads 16
+
+
+
 
 ### Assess Simulated Read Outputs with Quast
 
 ```
-plassembler_simulation_benchmarking assess-simulated --input benchmarking_simulate_demaio.csv --output ../simulated_benchmarking_de_maio --threads 16
+plassembler_simulation_benchmarking assess-simulated --input benchmarking_simulate_demaio.csv --output ../simulated_benchmarking_de_maio_1.1.0 --threads 16
 ```
 
 ### Assess Real Read Outputs with Quast
