@@ -1,6 +1,6 @@
 rule get_plasmids_1_threads_unicycler_SIM:
     input:
-        os.path.join(UNICYCLER_OUTPUT_1_THREADS_SIM,"{sample}", "assembly.fasta")
+        os.path.join(UNICYCLER_OUTPUT_1_THREADS_SIMULATED,"{sample}", "assembly.fasta")
     output:
         os.path.join(UNICYCLER_PLASMIDS_ONLY_1_THREADS_SIM,"{sample}", "assembly.fasta")
     threads:
@@ -17,7 +17,7 @@ rule get_plasmids_1_threads_unicycler_SIM:
 
 rule get_plasmids_8_threads_unicycler_SIM:
     input:
-        os.path.join(UNICYCLER_OUTPUT_8_THREADS_SIM,"{sample}", "assembly.fasta")
+        os.path.join(UNICYCLER_OUTPUT_8_THREADS_SIMULATED,"{sample}", "assembly.fasta")
     output:
         os.path.join(UNICYCLER_PLASMIDS_ONLY_8_THREADS_SIM,"{sample}", "assembly.fasta")
     threads:
@@ -34,7 +34,7 @@ rule get_plasmids_8_threads_unicycler_SIM:
 
 rule get_plasmids_16_threads_unicycler_SIM:
     input:
-        os.path.join(UNICYCLER_OUTPUT_16_THREADS_SIM,"{sample}", "assembly.fasta")
+        os.path.join(UNICYCLER_OUTPUT_16_THREADS_SIMULATED,"{sample}", "assembly.fasta")
     output:
         os.path.join(UNICYCLER_PLASMIDS_ONLY_16_THREADS_SIM,"{sample}", "assembly.fasta")
     threads:

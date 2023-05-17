@@ -56,20 +56,29 @@ plassembler_simulation_benchmarking assemble-real --input benchmarking_real.csv 
 
 ```
 plassembler_simulation_benchmarking raven --input benchmarking_real.csv  --output ../real_benchmarking --threads 16
+
+
 ```
 
 
 ### Assess Simulated Read Outputs with Quast
 
 ```
-plassembler_simulation_benchmarking assess-simulated --input benchmarking_simulate.csv --output ../simulated_benchmarking --threads 16
+ plassembler_simulation_benchmarking assess-simulated --input /Users/a1667917/Documents/plassembler_simulation_benchmarking/csvs/wick_c222_cav1217/benchmarking_simulate.csv --output /Volumes/VERBATIM_HD_3/plassembler_benchmarking_output/simulated_benchmarking_1.0.0 --threads 16
 ```
 
 ### Assess Real Read Outputs with Quast
 
 ```
-plassembler_simulation_benchmarking assess-real --input benchmarking_real.csv --output ../real_benchmarking --threads 16
+ plassembler_simulation_benchmarking assess-real --input /Users/a1667917/Documents/plassembler_simulation_benchmarking/csvs/wick_c222_cav1217/benchmarking_real_quast.csv --output /Volumes/VERBATIM_HD_3/plassembler_benchmarking_output/real_benchmarking_1.0.0 --threads 16
 ```
+
+
+
+
+
+
+
 
 De Maio _et al._ Dataset
 ======
