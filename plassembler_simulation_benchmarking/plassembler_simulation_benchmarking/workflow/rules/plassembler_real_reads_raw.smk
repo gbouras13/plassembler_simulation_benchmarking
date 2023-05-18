@@ -104,7 +104,7 @@ rule run_plassembler_1_thread_real_flye:
     shell:
         '''
         {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
-        -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f -r --use_flye  
+        -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f  --use_flye  
         '''
 
 rule run_plassembler_8_threads_real_flye:
@@ -131,7 +131,7 @@ rule run_plassembler_8_threads_real_flye:
     shell:
         '''
         {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
-        -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f -r --use_flye  
+        -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f  --use_flye  
         '''
 
 
@@ -159,7 +159,7 @@ rule run_plassembler_16_threads_real_flye:
     shell:
         '''
         {params.bindir}/plassembler.py -l {input.l} -1 {input.short_one} -2 {input.short_two} \
-        -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f -r --use_flye  
+        -o {params.out_dir} -t {threads} -p {wildcards.sample} -c {params.chrom} -d {params.db} -f  --use_flye  
         '''
 
 
