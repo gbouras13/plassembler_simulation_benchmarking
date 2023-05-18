@@ -21,7 +21,8 @@ os.path.join(FLAGS, "plassembler_real_aggr.txt"),
 
 SimulateQuastTargetFiles = [os.path.join(FLAGS, "quast_ref_aggr.txt"),
 os.path.join(FLAGS, "quast_simulated_aggr.txt"),
-os.path.join(FLAGS, "get_plasmids_unicycler_sim_aggr.txt")
+os.path.join(FLAGS, "get_plasmids_unicycler_sim_aggr.txt"),
+os.path.join(FLAGS, "get_fasta_lengths_sim_aggr.txt")
     ]
 
 RealQuastTargetFiles = [os.path.join(FLAGS, "quast_ref_aggr.txt"),

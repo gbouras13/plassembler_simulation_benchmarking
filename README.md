@@ -67,7 +67,7 @@ plassembler_simulation_benchmarking raven --input benchmarking_real.csv  --outpu
 ### Assess Simulated Read Outputs with Quast
 
 ```
- plassembler_simulation_benchmarking assess-simulated --input /Users/a1667917/Documents/plassembler_simulation_benchmarking/csvs/wick_c222_cav1217/benchmarking_simulate.csv --output /Volumes/VERBATIM_HD_3/plassembler_benchmarking_output/simulated_benchmarking_1.0.0 --threads 16
+ plassembler_simulation_benchmarking assess-simulated --input /Users/a1667917/Documents/plassembler_simulation_benchmarking/csvs/wick_c222_cav1217/benchmarking_simulate.csv --output /Volumes/VERBATIM_HD_3/plassembler_benchmarking_output/simulated_benchmarking_final --threads 16
 ```
 
 ### Assess Real Read Outputs with Quast
