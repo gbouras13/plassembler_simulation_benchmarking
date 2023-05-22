@@ -51,7 +51,8 @@ plassembler_simulation_benchmarking assemble-real --input benchmarking_simulate_
 ### Assemble Real Reads
 
 ```
-plassembler_simulation_benchmarking assemble-real --input benchmarking_real.csv  --output ../real_benchmarking --threads 16
+plassembler_simulation_benchmarking assemble-real --input benchmarking_real.csv  --output ../real_benchmarking_1.1.0 --threads 16
+
 ```
 
 
@@ -59,7 +60,6 @@ plassembler_simulation_benchmarking assemble-real --input benchmarking_real.csv 
 
 ```
 plassembler_simulation_benchmarking raven --input benchmarking_real.csv  --output ../real_benchmarking --threads 16
-
 
 ```
 
@@ -76,6 +76,7 @@ plassembler_simulation_benchmarking raven --input benchmarking_real.csv  --outpu
  plassembler_simulation_benchmarking assess-real --input /Users/a1667917/Documents/plassembler_simulation_benchmarking/csvs/wick_c222_cav1217/benchmarking_real_quast.csv --output /Volumes/VERBATIM_HD_3/plassembler_benchmarking_output/real_benchmarking_1.0.0 --threads 16
 ```
 
+ plassembler_simulation_benchmarking assess-simulated --input /Users/a1667917/Documents/plassembler_simulation_benchmarking/csvs/wick_c222_cav1217/benchmarking_simulate.csv --output /Volumes/VERBATIM_HD_3/plassembler_benchmarking_output/simulated_benchmarking_final --threads 16
 
 
 

@@ -95,7 +95,7 @@ rule run_plassembler_1_thread_real_flye:
         out_dir = os.path.join(PLASSEMBLER_OUTPUT_1_THREADS_REAL_FLYE,"{sample}"),
         chrom = get_length
     benchmark:
-        os.path.join(BENCHMARKS,"{sample}_plassembler_1_threads_real.txt")
+        os.path.join(BENCHMARKS,"{sample}_plassembler_1_threads_real_flye.txt")
     resources:
         mem_mb=32000,
         time=1000 # 300mins
@@ -122,7 +122,7 @@ rule run_plassembler_8_threads_real_flye:
         out_dir = os.path.join(PLASSEMBLER_OUTPUT_8_THREADS_REAL_FLYE,"{sample}"),
         chrom = get_length
     benchmark:
-        os.path.join(BENCHMARKS,"{sample}_plassembler_8_threads_real.txt")
+        os.path.join(BENCHMARKS,"{sample}_plassembler_8_threads_real_flye.txt")
     resources:
         mem_mb=32000,
         time=1000 # 300mins
@@ -150,7 +150,7 @@ rule run_plassembler_16_threads_real_flye:
         out_dir = os.path.join(PLASSEMBLER_OUTPUT_16_THREADS_REAL_FLYE,"{sample}"),
         chrom = get_length
     benchmark:
-        os.path.join(BENCHMARKS,"{sample}_plassembler_16_threads_real.txt")
+        os.path.join(BENCHMARKS,"{sample}_plassembler_16_threads_real_flye.txt")
     resources:
         mem_mb=32000,
         time=1000 # 300mins

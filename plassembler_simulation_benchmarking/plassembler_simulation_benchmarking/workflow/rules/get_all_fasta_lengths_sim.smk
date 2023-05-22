@@ -160,6 +160,63 @@ rule get_uni_length_16_threads_SIM:
         '../scripts/get_fasta_lengths.py'
 
 
+# flye
+
+
+rule get_plas_flye_length_1_threads_SIM:
+    input:
+        os.path.join(PLASSEMBLER_OUTPUT_1_THREADS_REAL_FLYE,"{sample}", "assembly.fasta")
+    output:
+        os.path.join(PLASSEMBLER_FLYE_1_THREADS_OUTPUT_LENGTHS,"{sample}.tsv")
+    threads:
+        1
+    params:
+        chrom = get_length
+    resources:
+        mem_mb=1000,
+        time=5
+    conda:
+        os.path.join('..', 'envs','scripts.yaml')
+    script:
+        '../scripts/get_fasta_lengths.py'
+
+
+rule get_plas_flye_length_8_threads_SIM:
+    input:
+        os.path.join(PLASSEMBLER_OUTPUT_8_THREADS_REAL_FLYE,"{sample}", "assembly.fasta")
+    output:
+        os.path.join(PLASSEMBLER_FLYE_8_THREADS_OUTPUT_LENGTHS,"{sample}.tsv")
+    threads:
+        1
+    params:
+        chrom = get_length
+    resources:
+        mem_mb=1000,
+        time=5
+    conda:
+        os.path.join('..', 'envs','scripts.yaml')
+    script:
+        '../scripts/get_fasta_lengths.py'
+
+
+
+rule get_plas_flye_length_16_threads_SIM:
+    input:
+        os.path.join(PLASSEMBLER_OUTPUT_16_THREADS_REAL_FLYE,"{sample}", "assembly.fasta")
+    output:
+        os.path.join(PLASSEMBLER_FLYE_16_THREADS_OUTPUT_LENGTHS,"{sample}.tsv")
+    threads:
+        1
+    params:
+        chrom = get_length
+    resources:
+        mem_mb=1000,
+        time=5
+    conda:
+        os.path.join('..', 'envs','scripts.yaml')
+    script:
+        '../scripts/get_fasta_lengths.py'
+
 
 
 
@@ -176,6 +233,9 @@ rule get_raven_aggr_sim:
         expand(os.path.join(UNICYCLER_1_THREADS_OUTPUT_LENGTHS,"{sample}.tsv"), sample = SAMPLES),
         expand(os.path.join(UNICYCLER_8_THREADS_OUTPUT_LENGTHS,"{sample}.tsv"), sample = SAMPLES),
         expand(os.path.join(UNICYCLER_16_THREADS_OUTPUT_LENGTHS,"{sample}.tsv"), sample = SAMPLES),
+        expand(os.path.join(PLASSEMBLER_FLYE_1_THREADS_OUTPUT_LENGTHS,"{sample}.tsv"), sample = SAMPLES),
+        expand(os.path.join(PLASSEMBLER_FLYE_8_THREADS_OUTPUT_LENGTHS,"{sample}.tsv"), sample = SAMPLES),
+        #expand(os.path.join(PLASSEMBLER_FLYE_16_THREADS_OUTPUT_LENGTHS,"{sample}.tsv"), sample = SAMPLES),
     output:
         os.path.join(FLAGS, "get_fasta_lengths_sim_aggr.txt")
     threads:
