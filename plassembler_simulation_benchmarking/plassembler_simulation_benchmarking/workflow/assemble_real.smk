@@ -24,7 +24,6 @@ PLASSEMBLER_DB = config["PLASSEMBLER_DB"]
 
 # need to specify the reads directory
 CSV = config['input']
-RAW = config['raw']
 
 # define functions
 
@@ -53,13 +52,8 @@ SAMPLES = list(dictReads.keys())
 
 # Import rules and functions
 include: "rules/targets.smk"
-if RAW == 'raw':
-    include: "rules/plassembler_real_reads_raw.smk"
-else:
-    include: "rules/plassembler_real_reads.smk"
-
+include: "rules/plassembler_real_reads.smk"
 include: "rules/unicycler_real_reads.smk"
-
 
 
 rule all:

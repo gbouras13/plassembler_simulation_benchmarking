@@ -10,7 +10,7 @@ rule run_unicycler_1_threads_simulated:
     params:
         out_dir = os.path.join(UNICYCLER_OUTPUT_1_THREADS_SIMULATED,"{sample}")
     benchmark:
-        os.path.join(BENCHMARKS,"{sample}_unicycler_1_threads_simulated.txt")
+        os.path.join(BENCHMARKS,"{sample}_unicycler_1_threads.txt")
     resources:
         mem_mb=32000,
         time=4000 
@@ -33,7 +33,7 @@ rule run_unicycler_8_threads_simulated:
     params:
         out_dir = os.path.join(UNICYCLER_OUTPUT_8_THREADS_SIMULATED,"{sample}")
     benchmark:
-        os.path.join(BENCHMARKS,"{sample}_unicycler_8_threads_simulated.txt")
+        os.path.join(BENCHMARKS,"{sample}_unicycler_8_threads.txt")
     resources:
         mem_mb=32000,
         time=4000 
@@ -59,7 +59,7 @@ rule run_unicycler_16_threads_simulated:
         mem_mb=32000,
         time=4000
     benchmark:
-        os.path.join(BENCHMARKS,"{sample}_unicycler_16_threads_simulated.txt")
+        os.path.join(BENCHMARKS,"{sample}_unicycler_16_threads.txt")
     conda:
         os.path.join('..', 'envs','plassembler.yaml')
     shell:
