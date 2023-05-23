@@ -5,12 +5,13 @@ This directory contains the pipeline used to benchmark [Plassembler](https://git
 
 I used [Snaketool](https://github.com/beardymcjohnface/Snaketool) to make this, and would highly recommend it!
 
-It should work 'out of the box' for the simulated reads. For the real read sets, you will need to change the `csv` input files in this directory with the correct FASTQ paths of the required files on your system. These FASTQ reads can be found in the Zenodo repository [here](sfsdfg), or by following the instructions outlined [here](https://github.com/gbouras13/plassembler/blob/1.0.0/docs/fastqs.md). 
+It should work 'out of the box' for the simulated reads. For the real read sets, you will need to change the `csv` input files in this directory with the correct FASTQ paths of the required files on your system. These FASTQ reads can be found in the Zenodo repository [here](sfsdfg), or by following the instructions outlined [here](https://github.com/gbouras13/plassembler/blob/main/docs/fastqs.md). 
 
 
 # Download plassembler_simulation_benchmarking and install it in a conda env
 
 ```
+# creates conda env
 conda create -n plassembler_benchmarking pip
 conda activate plassembler_benchmarking
 
@@ -22,117 +23,107 @@ pip install -e .
 plassembler_simulation_benchmarking --help
 ```
 
-Wick _et al._, Houtak _et al._ and Mathers _et al._ datasets
+Wick _et al._, Houtak _et al._ and Mathers _et al._ simulated datasets (8 samples)
 ======
 
-All outputs will be in a directories called `simulated_benchmarking` and `real_benchmarking`.
+All outputs will be in a directory called `simulated_benchmarking`.
 
-`simulated_benchmarking` will contain `SR` and `LR` directories for short and long simulated reads, and `SIMULATED` containing the Plassembler and Unicycler outputs for each thread count.
+`simulated_benchmarking` will contain `SR` and `LR` directories for short and long simulated reads, and `SIMULATED` containing the Plassembler Flye and Raven and Unicycler outputs for each thread count.
 
-`real_benchmarking` will contain  `REAL` containing the Plassembler and Unicycler outputs for each thread count.
-
-Both will contain `BENCHMARKS` containing the time/memory etc benchmarks and `QUAST`, which will contain the Quast outputs comparing Plassembler and Unicycler to the ground truth plasmid assemblies.
+It will also contain `BENCHMARKS` containing the time/memory etc benchmarks and `QUAST`, which will contain the Quast outputs comparing Plassembler and Unicycler to the ground truth plasmid assemblies.
 
 
 ### Simulate Reads 
 
 ```
-plassembler_simulation_benchmarking simulate --input benchmarking_simulate.csv --output ../simulated_benchmarking --threads 16
+# creates simulated read sets
+plassembler_simulation_benchmarking simulate --input benchmarking_simulate.csv --output simulated_benchmarking --threads 16
 ```
 
 ### Assemble Simulated Reads
 
 ```
-plassembler_simulation_benchmarking assemble-simulated --input benchmarking_simulate.csv --output ../simulated_benchmarking --threads 16
+# assembles the simulated read sets
+plassembler_simulation_benchmarking assemble-simulated --input benchmarking_simulate.csv --output simulated_benchmarking --threads 16
 ```
-
-plassembler_simulation_benchmarking assemble-real --input benchmarking_simulate_1.1.0.csv --output ../simulated_benchmarking_1.1.0 --threads 16
-
-### Assemble Real Reads
-
-```
-plassembler_simulation_benchmarking assemble-real --input benchmarking_real.csv  --output ../real_benchmarking_1.1.0 --threads 16
-
-```
-
-
-### Test Raven
-
-```
-plassembler_simulation_benchmarking raven --input benchmarking_real.csv  --output ../real_benchmarking --threads 16
-
-```
-
 
 ### Assess Simulated Read Outputs with Quast
 
 ```
- plassembler_simulation_benchmarking assess-simulated --input /Users/a1667917/Documents/plassembler_simulation_benchmarking/csvs/wick_c222_cav1217/benchmarking_simulate.csv --output /Volumes/VERBATIM_HD_3/plassembler_benchmarking_output/simulated_benchmarking_final --threads 16
+ plassembler_simulation_benchmarking assess-simulated --input benchmarking_simulate.csv --output simulated_benchmarking --threads 16
 ```
+
+Wick _et al._, real datasets (6 samples)
+======
+
+All outputs will be in a directory called `real_benchmarking`.
+
+`real_benchmarking` will contain  `REAL` containing the Plassembler Flye and Raven and Unicycler outputs for each thread count.
+
+It will also contain `BENCHMARKS` containing the time/memory etc benchmarks and `QUAST`, which will contain the Quast outputs comparing Plassembler and Unicycler to the ground truth plasmid assemblies.
+
+
+### Assemble Real Reads
+
+```
+#### you will need to get the FASTQ files and modify benchmarking_real.csv ####
+plassembler_simulation_benchmarking assemble-real --input benchmarking_real.csv  --output real_benchmarking --threads 16
+
+```
+
 
 ### Assess Real Read Outputs with Quast
 
 ```
- plassembler_simulation_benchmarking assess-real --input /Users/a1667917/Documents/plassembler_simulation_benchmarking/csvs/wick_c222_cav1217/benchmarking_real_quast.csv --output /Volumes/VERBATIM_HD_3/plassembler_benchmarking_output/real_benchmarking_1.0.0 --threads 16
+ plassembler_simulation_benchmarking assess-real --input benchmarking_real_quast.csv --output real_benchmarking --threads 16
 ```
 
- plassembler_simulation_benchmarking assess-simulated --input /Users/a1667917/Documents/plassembler_simulation_benchmarking/csvs/wick_c222_cav1217/benchmarking_simulate.csv --output /Volumes/VERBATIM_HD_3/plassembler_benchmarking_output/simulated_benchmarking_final --threads 16
 
-
-
-
-
-
-
-De Maio _et al._ Dataset
+De Maio _et al._ Simulated Dataset (12 samples)
 ======
 
-All outputs will be in a directories called `simulated_benchmarking_de_maio` and `real_benchmarking_de_maio`.
+All outputs will be in a directories called `simulated_benchmarking_de_maio`,
 
-`simulated_benchmarking_de_maio` will contain `SR` and `LR` directories for short and long simulated reads, and `SIMULATED` containing the Plassembler and Unicycler outputs for each thread count.
+`simulated_benchmarking_de_maio` will contain `SR` and `LR` directories for short and long simulated reads, and `SIMULATED` containing the Plassembler Flye and Raven and Unicycler outputs for each thread count.
 
-`real_benchmarking_de_maio` will contain  `REAL` containing the Plassembler and Unicycler outputs for each thread count.
 
-Both will contain `BENCHMARKS` containing the time/memory etc benchmarks and `QUAST`, which will contain the Quast outputs comparing Plassembler and Unicycler to the ground truth plasmid assemblies.
+It will also contain `BENCHMARKS` containing the time/memory etc benchmarks and `QUAST`, which will contain the Quast outputs comparing Plassembler and Unicycler to the ground truth plasmid assemblies.
 
 
 ### Simulate Reads
 
 ```
-plassembler_simulation_benchmarking simulate --input benchmarking_simulate_demaio.csv --output ../simulated_benchmarking_de_maio --threads 16
+plassembler_simulation_benchmarking simulate --input benchmarking_simulate_demaio.csv --output simulated_benchmarking_de_maio --threads 16
 ```
 
 ### Assemble Simulated Reads
 
 ```
-plassembler_simulation_benchmarking assemble-simulated --input benchmarking_simulate_demaio.csv --output ../simulated_benchmarking_de_maio --threads 16
-
-
-
-
-plassembler_simulation_benchmarking assemble-real --input benchmarking_simulate_demaio_1.1.0.csv --output ../simulated_benchmarking_de_maio_1.1.0 --threads 16
+plassembler_simulation_benchmarking assemble-simulated --input benchmarking_simulate_demaio.csv --output simulated_benchmarking_de_maio --threads 16
 ```
-
-### Assemble Real Reads
-
-```
-
-```
-
-
-plassembler_simulation_benchmarking assemble-real --input benchmarking_real_demaio.csv --output ../real_benchmarking_de_maio_1.1.0 --threads 16
-
-
 
 
 ### Assess Simulated Read Outputs with Quast
 
 ```
-plassembler_simulation_benchmarking assess-simulated --input benchmarking_simulate_demaio.csv --output ../simulated_benchmarking_de_maio_1.1.0 --threads 16
+ plassembler_simulation_benchmarking assess-simulated --input benchmarking_simulate_demaio.csv --output simulated_benchmarking_de_maio --threads 16
 ```
 
-### Assess Real Read Outputs with Quast
 
-```
-plassembler_simulation_benchmarking assess-real --input benchmarking_real_demaio.csv --output ../real_benchmarking_de_maio --threads 16
-```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -39,6 +39,7 @@ include: "rules/targets.smk"
 include: "rules/generate_quast_reference_directory.smk"
 include: "rules/get_plasmids_unicycler_real.smk"
 include: "rules/quast_real.smk"
+include: "rules/get_all_fasta_lengths_real.smk"
 
 
 rule all:
