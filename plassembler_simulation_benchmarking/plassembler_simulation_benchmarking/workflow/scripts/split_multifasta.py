@@ -16,7 +16,6 @@ def split_multifastq(input_fasta, out_dir):
 	# return args
 
 
-
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
 

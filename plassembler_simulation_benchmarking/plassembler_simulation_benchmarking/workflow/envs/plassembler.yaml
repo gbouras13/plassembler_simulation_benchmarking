@@ -6,5 +6,6 @@ dependencies:
   - rasusa
   - pysam
   - chopper
-  - time
+  - raven-assembler
+  - unicycler==0.5.0
 
