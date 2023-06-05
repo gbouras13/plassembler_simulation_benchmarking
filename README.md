@@ -5,7 +5,7 @@ This directory contains the pipeline used to benchmark [Plassembler](https://git
 
 I used [Snaketool](https://github.com/beardymcjohnface/Snaketool) to make this, and would highly recommend it!
 
-It should work 'out of the box' for the simulated reads. For the real read sets, you will need to change the `csv` input files in this directory with the correct FASTQ paths of the required files on your system. These FASTQ reads can be found in the Zenodo repository [here](sfsdfg), or by following the instructions outlined [here](https://github.com/gbouras13/plassembler/blob/main/docs/fastqs.md). 
+It should work 'out of the box' for the simulated reads. For the real read sets, you will need to change the `csv` input files in this directory with the correct FASTQ paths of the required files on your system. These FASTQ reads can be found in the Zenodo repository [here](https://doi.org/10.5281/zenodo.7996690), or by following the instructions outlined [here](https://github.com/gbouras13/plassembler/blob/main/docs/fastqs.md). 
 
 
 # Download plassembler_simulation_benchmarking and install it in a conda env
